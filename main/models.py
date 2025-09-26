@@ -19,7 +19,7 @@ from main import db
 
 # ondelete='CASCADE' = 글 작성자가 탈퇴시 작성했던 글 삭제
 #                      그냥 두면 오류가 발생할수 있기 때문에 삭제
-# ddds
+
 #####################################################################################
 
 
@@ -43,6 +43,8 @@ class Product(db.Model):
     content = db.Column(db.Text(), nullable=False) # 글 내용 / 필수입력
     create_date = db.Column(db.DateTime, nullable=False) # 작성일, 시각 / 자동생성
     modify_date = db.Column(db.DateTime, nullable=True) # 글 수정시 수정시각 알려줌
+    price = db.Column(db.string(15), nullable=False) # 가격 / 필수입력
+    img_path = db.Column(db.String(200), nullable=True)  # 이미지 삽입시 사진이 아니라 이미지 저장 경로 추적 / 필수입력 아님
 
     # 작성자를 참조
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False) # 사용자 삭제시 작성글 삭제
