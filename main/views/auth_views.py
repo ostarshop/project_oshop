@@ -1,10 +1,9 @@
-from flask import Blueprint, redirect, url_for, request, flash, render_template
-from werkzeug.security import generate_password_hash
+from flask import Blueprint, redirect, url_for, request, flash, render_template, session
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from main import db
 from main.models import User
-from main.views.forms import UserCreateForm
-
+from main.views.forms import UserCreateForm, UserLoginForm
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -14,12 +13,46 @@ def signup():
     if request.method == 'POST' and form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if not user:
-            user = User(username=form.username.data,
+            user = User(userid=form.userid.data,
+                        username=form.username.data,
                         password=generate_password_hash(form.password1.data),
-                        email=form.email.data)
+                        email=form.email.data,
+                        phone=form.phone.data,
+                        address=form.address.data                 
+                        )
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('main.index'))
         else:
             flash('이미 존재하는 사용자입니다.')
     return render_template('auth/signup.html', form=form)
+
+@bp.route('/login', methods=['GET', 'POST'])
+def login():
+    form = UserLoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        error = None
+        user = User.query.filter_by(userid=form.userid.data).first()
+        if not user:
+            error = '존재하지 않는 사용자입니다.'
+        elif not check_password_hash(user.password, form.password.data):
+            error = '비밀번호가 올바르지 않습니다.'
+        if error is None:
+            session.clear()
+            session['user_id'] = user.id
+            _next = request.args.get('next', '')
+            if _next:
+                return redirect(_next)
+            else:
+                return redirect(url_for('main.index'))
+        flash(error)
+    return render_template('auth/login.html', form=form) # GET 방식으로 로그인 요청시 html 문서가 나오도록
+
+
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('main.index'))
+
+def login_required(view):
+    return wrapped_view
