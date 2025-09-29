@@ -2,7 +2,23 @@
 {% block content %}
 
 {# 코드 작성은 이선 이후로 작성 바람#}
-
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">로그인</h5>
+    <form method="post">
+        {% include 'form_errors.html' %}
+        <div class="mb-3">
+            <label for="userid">아이디</label>
+            <input type="text" name="userid" id="userid" class="form-control" value="{{form.userid.data or ''}}">
+        </div>
+        <div class="mb-3">
+            <label for="password">비밀번호</label>
+            <input type="password" name="password" id="password" class="form-control" value="{{form.password.data or ''}}">
+        </div>
+        <button type="submit" class="btn btn-primary">로그인</button>
+    </form>
+</div>
 
 
 {% endblock %}
+
+
