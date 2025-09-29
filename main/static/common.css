@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+ul, ol {list-style: none;}
+a {text-decoration: none; color: #333;}
+
+
+
+/* --------------------------------------------------------------- */
+/* 위로 올라가기 버튼 (지피티 참고) */
+/* --------------------------------------------------------------- */
+
+
+
+/* --------------------------------------------------------------- */
+/* Header */
+/* --------------------------------------------------------------- */
+.header {width: 100%; height: 380px; display: flex; justify-content: center;}
+.header-top {display: flex; justify-content: space-between; width: 1200px; height: 75px; border-bottom: 1px solid #4444441c;}
+.header-t-text {display: flex; align-items: center;}
+.header-t-text p {padding-left: 10px; cursor: pointer;}
+.header-p-1:hover {transition: all 0.3s; color: rgb(22, 180, 22);}
+.logo img {width: 90px; height: 72px; margin-left: 30px;}
+.header-text {width: 1200px; height: 305px; background-color: aqua;}
+
+.header-bottom {width: 1200px; height: 305px; display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 1px solid #4444441c;}
+.header-search-box {display: flex;}
+.header-b-text {font-weight: 450; letter-spacing: 2px; padding-bottom: 60px; font-size: 30px;}
+.header-search {width: 400px; height: 50px; border-bottom-left-radius: 10px; border-top-left-radius: 10px; outline: none; border: 1px solid #000000; padding-left: 18px; font-size: 17px;}
+.search-button {width: 90px; height: 50px; border: 1px solid #000000; border-bottom-right-radius: 10px; border-top-right-radius: 10px; cursor: pointer; background-color: rgb(84, 208, 50); color: white; border-left: none;}
+.search-button:hover {background-color:rgb(37, 161, 2);}
+.search-button i {font-size: 18px;}
+
+
+
+/* --------------------------------------------------------------- */
+/* footer top */
+/* --------------------------------------------------------------- */
+.footer_top{width: 100%; height: 200px; background-color: rgb(185, 150, 217);}
+
+
+/* --------------------------------------------------------------- */
+/* footer */
+/* --------------------------------------------------------------- */
+.footer {width: 100%; height: 450px; background-color: aquamarine;}
