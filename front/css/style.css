@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* 베이스 */
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%
+}
+
+body {
+  margin: 0;
+  color: #222;
+  background: #F8F8F8
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+a {
+  color: inherit;
+  text-decoration: none
+}
+
+img {
+  max-width: 100%;
+  display: block
+}
+
+/* 공통 래퍼 */
+.inner {
+  width: 1200px;
+  margin: 0 auto
+}
+
+.d-none {
+  display: none !important
+}
+
+/* 유틸바 */
+.utilbar {
+  background: #f6f7fb;
+  border-bottom: 1px solid #e7e9ef
+}
+
+.utilbar .util-menu {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 6px 0
+}
+
+.utilbar a {
+  font-size: 12px;
+  color: #666
+}
+
+/* 헤더 */
+.header .inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 86px
+}
+
+.logo a {
+  display: block;
+  font-weight: 800;
+  font-size: 28px;
+  color: #1674e5
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1
+}
+
+.search input {
+  flex: 1;
+  height: 40px;
+  border: 2px solid #1674e5;
+  border-radius: 6px;
+  padding: 0 12px
+}
+
+.search button {
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #1674e5;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer
+}
