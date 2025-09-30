@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='sub_index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sub_common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
@@ -32,8 +33,13 @@
                 <button>검색</button>
             </div>
             <ul class="nav">
+                {% if g.user %}
+                <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
+                <li><a href="{{ url_for('member.mypage') }}">마이페이지</a></li>
+                {% else %}
                 <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
                 <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
+                {% endif %}
                 <li><a href="">고객지원</a></li>
             </ul>
         </div>

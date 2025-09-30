@@ -1,0 +1,151 @@
+/* reset.css — 간단하고 실무에 바로 쓸 수 있는 리셋 */
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 1) 박스 사이징을 전역으로 설정 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2) 기본 여백 제거 및 텍스트 렌더링 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-size: 100%;
+  font: inherit;
+}
+
+/* 3) HTML5 요소를 블록 레벨로 */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* 4) 문서 기본 설정 */
+html, body {
+  height: 100%;
+  line-height: 1.4; /* 보통 1.4~1.6 사이 권장 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  color: inherit;
+  font-family: inherit;
+}
+
+/* 5) 목록, 인용문, 표 등 기본 스타일 제거/정리 */
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before, q::after {
+  content: "";
+  content: none;
+}
+
+/* 6) 링크, 이미지, 미디어 */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 7) 폼 요소 기본 스타일 통일 */
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+/* 버튼과 클릭 가능한 요소의 기본 포인터 */
+button, [role="button"], a.button {
+  cursor: pointer;
+}
+
+/* 8) 접근성: 키보드 포커스 표시 (focus-visible 권장) */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 3px solid Highlight; /* 필요하면 프로젝트 색상으로 교체 */
+  outline-offset: 2px;
+}
+
+/* 9) 테이블 기본 정리 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 10) 유틸(옵션) — 필요하면 활성화해서 사용 */
+.hidden {
+  display: none !important;
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/*  여기까지가 리셋 css */
+
+/* 전체 영역 설정 */
+.mypage{width: 1200px; height: 1000px; margin: 0 auto; 
+  background-color: aqua;}
+
+/* 마이페이지 최상단 */
+.top{ width: 1200px; height: 500px;  display: flex; padding-top: 20px;
+  background-color: blue;}
+
+/* 자기정보 */
+.my{width: 400px; height: 450px; background-color: aqua; padding: 10px; position: absolute;}
+
+/* 자기사진 */
+.myimg{width: 150px; height: 200px;background-color: rebeccapurple}
+
+/* 닉네임, 연락처 */
+.mymid { width: 380px ;height: 120px; margin:10px 0; padding: 10px; background-color: silver}
+.name{margin-bottom:5px;}
+
+/* 주소 */
+.mybottom {width: 380px ;height: 60px; padding: 10px; background-color: gray}
+
+/* 등록한 상품 기록 */
+.post{width: 700px; height: 450px; margin-left:auto ; background-color: gold;}
+
+/* 댓글기록 */
+.comment{width: 1200px; height: 500px; margin-top: 20px;
+  background-color: red;}
+
