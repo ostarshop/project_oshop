@@ -7,8 +7,8 @@
     <title>서브다</title>
 
     <!-- css 연결 -->
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/sub_common.css">
+    <link rel="stylesheet" href="./css/sub_index.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <button>검색</button>
             </div>
             <ul class="nav">
-                <li><a href="">로그인</a></li>
+                <li><a href="{{ url_for('auth._login') }}">로그인</a></li>
                 <li><a href="">회원가입</a></li>
                 <li><a href="">고객지원</a></li>
             </ul>
