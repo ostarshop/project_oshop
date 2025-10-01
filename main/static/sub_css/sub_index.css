@@ -31,6 +31,8 @@
 .size-toggle {background: none;border: none;font-size: 14px;font-weight: bold;width: 100%;text-align: left;cursor: pointer;display: flex;justify-content: space-between;align-items: center;}
 .size-toggle .arrow2 {font-size: 12px;transition: transform 0.3s;}
 
+#s{width: 15px; height: 15px;}
+
 .size-list {list-style: none;margin: 0;padding: 0;display: none;}
 .size-list li {margin: 5px 0;}
 .size-list input {margin-right: 5px;}

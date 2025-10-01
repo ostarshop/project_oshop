@@ -17,15 +17,18 @@
             <!-- 자기정보 -->
             <div class="my">
                 <!-- 자기사진 -->
-                <img class="myimg" src="" alt="">
+                <img class="myimg" src="{{ url_for('static', filename='test.jpg') }}" alt="">
                 <!-- 닉네임, 연락처 -->
                 <div class="mymid">
-                    <div class="name">닉네임 <br>{{user.username}}</div>
-                    <div class="phone">전화번호 <br> {{user.phone}}</div>
+                    <div class="name">닉네임 </div>
+                    <div class="name_db">{{user.username}}</div>
+                    <div class="phone">전화번호 </div>
+                    <div class="phone_db">{{user.phone}}</div>
                 </div>
                 <!-- 주소 -->
                 <div class="mybottom">
-                    <div class="address">주소 <br> {{user.address}}</div>
+                    <div class="address">주소</div>
+                    <div class="address_db"> {{user.address}}</div>
                 </div>
             </div>
             <!-- 등록한 상품기록 -->

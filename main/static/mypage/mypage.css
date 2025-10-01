@@ -123,29 +123,33 @@ table {
 
 /* 전체 영역 설정 */
 .mypage{width: 1200px; height: 1000px; margin: 0 auto; 
-  background-color: aqua;}
+  }
 
 /* 마이페이지 최상단 */
 .top{ width: 1200px; height: 500px;  display: flex; padding-top: 20px;
-  background-color: blue;}
+  }
 
 /* 자기정보 */
-.my{width: 400px; height: 450px; background-color: aqua; padding: 10px; position: absolute;}
+.my{width: 400px; height: 450px; padding: 10px; position: absolute; border: solid 2px #99ff99 ;}
 
 /* 자기사진 */
-.myimg{width: 150px; height: 200px;background-color: rebeccapurple}
+.myimg{width: 150px; height: 200px; border: solid  #f5f5f5;; }
 
 /* 닉네임, 연락처 */
-.mymid { width: 380px ;height: 120px; margin:10px 0; padding: 10px; background-color: silver}
-.name{margin-bottom:5px;}
+.mymid { width: 380px ;height: 120px; margin:10px 0; padding: 10px;  }
+.name{margin-bottom:5px; }
+.name_db{border: solid  #f5f5f5;;}
+.phone_db{border: solid  #f5f5f5;;}
 
 /* 주소 */
-.mybottom {width: 380px ;height: 60px; padding: 10px; background-color: gray}
+.mybottom {width: 380px ;height: 60px; padding: 10px;}
+
+.address_db{border: solid  #f5f5f5;}
 
 /* 등록한 상품 기록 */
-.post{width: 700px; height: 450px; margin-left:auto ; background-color: gold;}
+.post{width: 700px; height: 450px; margin-left:auto ;  border: solid 2px #99ff99 ;}
 
 /* 댓글기록 */
 .comment{width: 1200px; height: 500px; margin-top: 20px;
-  background-color: red;}
+   border: solid 2px #99ff99 ;}
 
