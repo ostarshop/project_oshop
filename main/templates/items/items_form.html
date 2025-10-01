@@ -1,0 +1,43 @@
+  {% extends 'base.html' %}
+{% block content %}
+
+{# 코드 작성은 이선 이후로 작성 바람#}
+   <div id="slider1">
+        <div class="new">
+            <div class="new-button">상품등록</div>
+        </div>
+    </div>
+    <!-- 몸통2 -->
+    <div id="slider2">
+        <div class="title">
+            <div class="title-box">
+                <input type="text" placeholder="제목을 입력하세요.">
+            </div>
+        </div>
+    </div>
+    <!-- 몸통4 -->
+    <div id="slider4">
+        <div class="text">
+            <div class="text_1">
+                <textarea name="sliderText" rows="27" cols="170" placeholder="내용을 입력하세요."></textarea>
+            </div>
+        </div>
+    </div>
+    <!-- 몸통5 -->
+    <div id="slider5">
+        <div class="new_image">
+            <div class="nimg-up">
+                <label for="imageUpload">이미지 업로드</label>
+                <input type="file" value="불러오기">
+            </div>
+        </div>
+    </div>
+    <!-- 몸통6 -->
+    <div id="slider6">
+        <div class="save">
+            <div class="save_pu">
+                <input type="submit" value="저장하기" class="save_s">
+            </div>
+        </div>
+    </div>
+  {% endblock %}

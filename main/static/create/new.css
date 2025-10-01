@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/* 몸통1 */
+#slider1 {width: 100%; height: 150px;}
+/* 상품등록 */
+.new {width: 1200px;height: 150px;margin: 0 auto;display: flex; }
+.new-button {width: 130px;height: 50px;background-color:#c1ffce;display: flex;justify-content: center;align-items: center; margin: 65px 25px;cursor: pointer;border-radius: 5px;}
+
+/* 몸통2 */
+#slider2 {width: 100%; height: 150px;}
+/*제목*/
+.title {width: 1200px;height: 150px;margin: 0 auto;display: flex;}
+.title-box {display: flex;justify-content: center;align-items: center;margin: 25px;}
+.title-box input {width: 1150px;height: 50px; border: 1px solid #00CD26; border-radius: 4px;cursor: pointer;padding: 20px;outline: none;}
+
+/* 몸통4 */
+#slider4 {width: 100%;height: 500px;}
+/* 판매글 내용 */
+.text {width: 1200px;height: 500px;margin: 0 auto;display: flex; justify-content: center;align-items: center;}
+.text_1 {width: 1170px; height: 450px;border: 1px solid #00CD26; border-radius: 10px;justify-content: center;display: flex;}
+textarea {outline: none;border: none;padding: 10px;border-radius: 10px;font-size: 30px;resize: none;}
+
+
+/* 몸통5 */
+#slider5 {width: 100%;height: 150px;}
+/* 이미지 업로드 */
+.new_image {width: 1200px;height: 500px;margin: 0 auto;display: flex;}
+.nimg-up {width: 1160px;height: 50px;margin-left: 20px; display: flex;align-items: center; padding: 20px;gap: 5px;border: 1px solid #00CD26;border-radius: 5px;margin-top: 35px;}
+.nimg-up:hover {background-color: #eaeaea;}
+.nimg-up label {font-weight: bold;}
+
+
+/* 몸통6 */
+#slider6 {width: 100%;height: 150px;}
+/* 저장하기 */
+.save {width: 1200px;height: 150px;margin: 0 auto;display: flex;align-items: anchor-center;justify-content: end;display: flex}
+.save_pu {width: 130px;height: 50px; display: flex;justify-content: center;align-items: center; margin:12px;font-weight: bold;}
+.save_pu input {width: 100px;height: 50px; padding: 6px 10px;}
+.save_s {background-color: #00CD26;color: white;border: none;border-radius: 5px;}
+.save_s:hover {background-color: #00941B;transition:all 0.3;}

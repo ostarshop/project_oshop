@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms.fields.simple import StringField, PasswordField, EmailField
 from wtforms.validators import DataRequired, Length, EqualTo, Email
 
@@ -11,6 +12,7 @@ class UserCreateForm(FlaskForm):
     phone = StringField('전화번호', validators=[DataRequired('000-0000-0000')])
     email = EmailField('이메일', validators=[DataRequired('이메일을 입력해주세요'), Email()])
     address = StringField('주소', validators=[DataRequired('주소를 입력해주세요')]) # 추가 고민 필요 주소를 얼마나 쪼갤지
+    image = FileField('프로필사진', validators=[FileAllowed(['jpg', 'jpeg', 'png','gif'])])
 
 
 class UserLoginForm(FlaskForm):
