@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from main import db
 from main.models import User
-from main.views.forms import UserCreateForm, UserLoginForm
+from main.forms import UserCreateForm, UserLoginForm
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 

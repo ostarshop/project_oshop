@@ -122,7 +122,7 @@ table {
 /*  여기까지가 리셋 css */
 
 /* 전체 영역 설정 */
-.mypage{width: 1200px; height: 1000px; margin: 0 auto; 
+.mypage{width: 1200px; height: 1040px; margin: 0 auto;
   }
 
 /* 마이페이지 최상단 */
@@ -130,26 +130,40 @@ table {
   }
 
 /* 자기정보 */
-.my{width: 400px; height: 450px; padding: 10px; position: absolute; border: solid 2px #99ff99 ;}
+.my{width: 400px; height: 450px; padding: 10px; position: absolute; border: solid 2px #99ff99 ; border-radius: 15px;}
 
+.mytop{display: flex;}
 /* 자기사진 */
-.myimg{width: 150px; height: 200px; border: solid  #f5f5f5;; }
+.myimg{width: 150px; height: 200px; border: solid  #f5f5f5;}
+/* 사진 링크 */
+.img_url{width: 220px; height: 80px; margin-left:5px; margin-top:40px;}
+/* 사진 등록버튼 */
+.image_submit{width: 80px ;background-color: #00CD26; border-radius: 10px; margin-top: 5px;}
+/* 상품등록 페이지로 이동 */
+.create{width: 150px; height: 30px; margin: 0 auto; margin-top: 45px; background-color: #00CD26; border-radius: 10px; line-height: 30px ; text-align: center }
 
-/* 닉네임, 연락처 */
-.mymid { width: 380px ;height: 120px; margin:10px 0; padding: 10px;  }
-.name{margin-bottom:5px; }
-.name_db{border: solid  #f5f5f5;;}
-.phone_db{border: solid  #f5f5f5;;}
+
+.mymid { width: 380px ;height: 120px; margin-bottom:10px; padding: 10px;  }
+/* 닉네임 */
+.name{margin-bottom:5px; margin-left: 5px;}
+/* 유저 닉네임*/
+.name_db{border: solid  #f5f5f5; padding:5px 8px ; border-radius: 20px;}
+/* 전화번호 */
+.phone {margin: 5px 0; margin-left: 5px;}
+/* 유저 전화번호 */
+.phone_db{border: solid  #f5f5f5;padding:5px 8px ; border-radius: 20px;}
 
 /* 주소 */
 .mybottom {width: 380px ;height: 60px; padding: 10px;}
-
-.address_db{border: solid  #f5f5f5;}
+/* 주소 */
+.address { margin-top: 10px; margin-left: 5px;}
+/* 유저 주소 */
+.address_db{border: solid  #f5f5f5; padding:5px 8px ; border-radius: 20px;}
 
 /* 등록한 상품 기록 */
-.post{width: 700px; height: 450px; margin-left:auto ;  border: solid 2px #99ff99 ;}
+.post{width: 700px; height: 450px; margin-left:auto ;  border: solid 2px #99ff99 ; border-radius: 15px;}
 
 /* 댓글기록 */
-.comment{width: 1200px; height: 500px; margin-top: 20px;
+.comment{width: 1200px; height: 500px; margin-top: 20px; border-radius: 15px;
    border: solid 2px #99ff99 ;}
 

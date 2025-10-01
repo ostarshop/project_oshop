@@ -17,7 +17,24 @@
             <!-- 자기정보 -->
             <div class="my">
                 <!-- 자기사진 -->
-                <img class="myimg" src="{{ url_for('static', filename='test.jpg') }}" alt="">
+                <div class="mytop">
+                    <img class="myimg" src="{{ url_for('static', filename=user.image) }}" alt="">
+                    <div>
+                        <!-- 상품등록 -->
+                        <div class="create"><a href="{{ url_for('member.create') }}">임시로 상품등록 버튼만듬 추후 이동</a> </div>
+                        <!-- 이미지 업로드 -->
+                        <form method="post" action="{{ url_for('member.mypage') }}" enctype="multipart/form-data">
+
+                                {{ form.csrf_token }}
+
+                            <div class="img_url">
+                                <label for="image">이미지 첨부</label>
+                                <input type="file" name="image" id="image" class="form-control">
+                                <button type="submit" class="image_submit">저장하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <!-- 닉네임, 연락처 -->
                 <div class="mymid">
                     <div class="name">닉네임 </div>
@@ -33,6 +50,7 @@
             </div>
             <!-- 등록한 상품기록 -->
             <div class="post">
+
                 상품 등록 기록 조회
             </div>
         </div>

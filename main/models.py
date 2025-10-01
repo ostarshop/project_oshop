@@ -34,6 +34,7 @@ class User(db.Model):
     phone = db.Column(db.String(20), unique=True, nullable=False) # 전화번호 / 필수입력
     address = db.Column(db.String(200), nullable=False) # 주소 / 필수입력
     admin = db.Column(db.Boolean, nullable=False, default=False) # 어드민 여부 / 필수 입력
+    image = db.Column(db.String(200), nullable=True,default='user_img/default.jpg')
 
 # 판매모델 생성
 class Product(db.Model):
