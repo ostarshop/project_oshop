@@ -7,3 +7,4 @@ bp = Blueprint('main', __name__, url_prefix='/')
 @bp.route('/')
 def index():
     return redirect(url_for('items._main'))  # 템플릿을 직접 렌더링
+
