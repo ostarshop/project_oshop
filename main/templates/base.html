@@ -53,49 +53,66 @@
 {% block content %}
 {% endblock %}
 <!--기본 템플릿 안에 삽입될 내용 end-->
- <footer>
-        <div class="f-benar">
-            <img src="{{ url_for('static', filename='img/sub/benar.png') }}" alt="발배너">
+ <div class="footer">
+            <div class="footer-all">
+                <div class="footer-logo">
+                    <img src="./img/찐찐찐막로고.png" alt="">
+                </div>
+                <div class="footer-text">
+                    <div>
+                        <ul class="footer-text1">
+                            <li>고객 안내</li>
+                            <li>이용 안내</li>
+                            <li>안전 정책</li>
+                            <li>회사 소개</li>
+                            <li>공지사항</li>
+                            <li>자주 묻는 질문</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="footer-text1">
+                            <li>오핑몰 소개</li>
+                            <li>회사 소개</li>
+                            <li>채용 안내</li>
+                            <li>팀 블로그</li>
+                            <li>개인정보 처리방침</li>
+                            <li>고객센터</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="footer-text1">
+                            <li>About Store</li>
+                            <li>회사명(주) : 오핑몰</li>
+                            <li>주소 : 경기도 수원시 팔달구 권광로 146 벽산그랜드코아 4층 404호</li>
+                            <li>대표 : 김카피</li>
+                            <li>사업자등록번호 : 012-34-56789</li>
+                            <li>통신판매업 신고번호 : 012-345-6789</li>
+                            <li>대표번호 : 010-1234-5678</li>
+                            <li>메일주소 : 5pickshop@naver.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-sub">
+                <div class="footer-sub-all">
+                    <div class="footer-icon">
+                        <a href="https://www.naver.com/"><img src="{{ url_for('static', filename='img/main/sub/naver.png') }}" alt="naver_logo"></a>
+                        <a href="https://www.youtube.com/"><img src="{{ url_for('static', filename='img/main/sub/youtube.png') }}" alt="youtube_logo"></a>
+                        <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='img/main/sub/instar.png') }}" alt="instagram_logo"></a>
+                        <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='img/main/sub/f-book.png') }}" alt="facebook_logo"></a>
+                        <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=ko"><img src="{{ url_for('static', filename='img/main/sub/kotalk.png') }}" alt="kakao_logo"></a>
+                    </div>
+                    <p>Copyright © All Right Reserved</p>
+                    <div class="footer-card">
+                        <img src="{{ url_for('static', filename='img/main/card1.svg') }}" alt="카드1">
+                        <img src="{{ url_for('static', filename='img/main/card2.svg') }}" alt="카드2">
+                        <img src="{{ url_for('static', filename='img/main/card3.svg') }}" alt="카드3">
+                        <img src="{{ url_for('static', filename='img/main/card4.svg') }}" alt="카드4">
+                        <img src="{{ url_for('static', filename='img/main/card5.svg') }}" alt="카드5">
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- 로고 -->
-        <div class="f-gibon">
-            <div class="f-left">
-                <img src="{{ url_for('static', filename='img/sub/logo.png') }}" alt="로고인척">
-            </div>
-            <!-- 센터 -->
-            <div class="f-center">
-                <div class="f1"></div>
-                <div class="f2"></div>
-            </div>
-            <!-- 부가안내 -->
-            <div class="f-right">
-                <p>About Store</p>
-                <p>회사명(주) 오핑몰</p>
-                <P>주소 경기도 수원시 팔달구 권강로 146 벽산그랜드코아 4층 404호</P>
-                <p>대표 김카피</p>
-                <p>사업자등록번호 012-34-56789</p>
-                <p>메일주소 5pinkshop@naver.com</p>
-            </div>
-        </div>
-
-        <div class="f-foot">
-            <div class="sns">
-                <img src="{{ url_for('static', filename='img/sub/kotalk.png') }}" alt="카톡">
-                <img src="./img/instar.png" alt="인스타">
-                <img src="./img/naver.png" alt="네이버">
-                <img src="./img/youtube.png" alt="유튜브">
-            </div>
-            <p class="copy">Copyright © All Right Reserved</p>
-            <div class="cards">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-
-    </footer>
 
 <!--부트 스트렙 js-->
 
