@@ -1,45 +1,750 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5PICK</title>
     
+
+
+    <!-- swiper slide 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- 파일 연결 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='main_css/main_common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main_css/main_slide.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='main_css/main_index.css') }}">
+
+
+
+    <!-- fontawesome icon 연결 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<!-- 부트스트랩 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
 
 
 </head>
 <body>
         <!-- 위로 올라가기 버튼 (지피티 참고) -->
-        <div></div>
+        <a href="#" id="back-to-top" class="back-to-top">▲</a>
 
 
-            <!-- Header -->
-            <div class="header">
-                <div class="header-all">
-                    <div class="header-top">
-                        <div class="logo"><a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/logo.png') }}" alt="logo"></a></div>
-                        <div class="header-t-text">
-                            {% if g.user %}
-                            <p class="loga" ><a href=" {{ url_for('auth.logout') }}"> 로그아웃</a> </p>
-                            <p class="mypage"><a href="{{ url_for('member.mypage') }}">마이페이지</a></p>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-all">
+                <div class="header-top">
+                    <div class="logo"><a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}" alt="logo"></a></div>
+                    <ul class="header-t-text">
+                          {% if g.user %}
+                            <li class="header-p-1"><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
+                            <li class="header-p-1"><a href="{{ url_for('member.mypage') }}">마이페이지</a></li>
                             {% else %}
-                            <p class="header-p-1"><a href="{{ url_for('auth.login') }}">로그인</a></p>
-                            <p class="header-p-1"><a href="{{ url_for('auth.signup') }}">회원가입</a></p>
+                            <li class="header-p-1"><a href="{{ url_for('auth.login') }}">로그인</a></li>
+                            <li class="header-p-1"><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
                             {% endif %}
-                            <p class="header-p-1">고객지원</p>
+                            <li class="header-p-1"><a href="#">고객지원</a></li>
+
+                    </ul>
+                </div>
+                <div class="header-bottom"> <!-- 검색 -->
+                    <div class="header-b">
+                        <h2 class="header-b-text">고민은 배송을 늦출 뿐</h2>
+                        <div class="header-search-box">
+                            <input type="search" placeholder="추석 선물세트" class="header-search">
+                            <button class="search-button">검색</button>
                         </div>
                     </div>
-                    <div class="header-bottom">
-                        <div class="header-b">
-                            <h2 class="header-b-text">고민은 배송을 늦출 뿐</h2>
-                            <div class="header-search-box">
-                                <input type="search" placeholder="추석 선물세트" class="header-search">
-                                <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- nav -->
+        <div class="nav">
+            <nav class="nav-all">
+                <div><a href="{{ url_for('items._list') }}"><i class="fa-solid fa-shirt"></i></a></div>
+                <div><a href=""><i class="fa-solid fa-book"></i></a></div>
+                <div><a href=""><i class="fa-regular fa-gem"></i></a></div>
+                <div><a href=""><i class="fa-solid fa-icons"></i></a></div>
+                <div><a href=""><i class="fa-solid fa-thumbs-up"></i></a></div>
+                <div><a href=""><i class="fa-solid fa-users-gear"></i></a></div>
+            </nav>
+        </div>
+
+
+
+        <!-- Main Slider -->
+        <div class="main_slider">
+            <div class="swiper mySwiper1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="{{ url_for('static', filename='img/main/맛집쿠폰.webp') }}" alt=""></div>
+                    <div class="swiper-slide"><img src="{{ url_for('static', filename='img/main/연휴.webp') }}" alt=""></div>
+                    <div class="swiper-slide"><img src="{{ url_for('static', filename='img/main/할인쿠폰.webp') }}" alt=""></div>
+                    <div class="swiper-slide"><img src="{{ url_for('static', filename='img/main/굿즈_폰케이스.webp') }}" alt=""></div>
+                </div>
+                    <div class="swiper-button-next1">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="swiper-button-prev1">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+            </div>
+        </div>
+
+
+
+        <!-- 추석 이벤트 상품 -->
+        <div class="event">
+            <div class="event-all">
+                <div class="event-all2">
+                    <div class="event-title">
+                        <div class="event-title_1">
+                            <i class="fa-solid fa-gift"></i>
+                            <p> 추석 특가 이벤트! </p>
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                    </div>
+                    <div class="event-subject">
+                        <div id="Slider2">
+                            <div class="swiper mySwiper2">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="slide2-production">
+                                            <img src="./img/추석특가이벤트_강아지옷.jpg" alt="추석특가_강아지옷" style="height: 239.75px">
+                                            <h4>강아지 한복 추석 설날 설빔 핸드메이드 : 코이베베</h4>
+                                            <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                            <div class="slide2-text"><p>50%</p><p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
+                                            <div class="slide2-text2"><p>18,800원</p><p>37,600원</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide2-production">
+                                            <img src="./img/추석특가이벤트_밤수세미.jpg" alt="추석특가_강아지옷">
+                                            <h4>밤수세미 추석수세미 핸드메이드 : 파스텔감성공간</h4>
+                                            <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                            <div class="slide2-text"><p>50%</p><p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
+                                            <div class="slide2-text2"><p>3,500원</p><p>7,000원</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide2-production">
+                                            <img src="./img/추석특가이벤트_강아지장난감.jpg" alt="추석특가_강아지옷">
+                                            <h4>핸드메이드 추석송편 호박전 표고버섯 뜨개 강아지 장난감</h4>
+                                            <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                            <div class="slide2-text"><p>53%</p><p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
+                                            <div class="slide2-text2"><p>7,000원</p><p>15,000원</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide2-production">
+                                            <img src="./img/추석특가이벤트_잔세트.jpg" alt="추석특가_강아지옷">
+                                            <h4>달소금 추석선물 핸드메이드 도자기 에스프레소 잔세트</h4>
+                                            <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                            <div class="slide2-text"><p>19%</p><p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
+                                            <div class="slide2-text2"><p>34,000원</p><p>42,000원</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide2-production">
+                                            <img src="./img/추석특가이벤트_송편비누.jpg" alt="추석특가_강아지옷">
+                                            <h4>추석 송편캔들 핸드메이드, 수공예, 수제 먹거리, 송편캔들</h4>
+                                            <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                            <div class="slide2-text"><p>50%</p><p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
+                                            <div class="slide2-text2"><p>6,000원</p><p>12,000원</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="slide2-production">
+                                            <img src="./img/추석특가이벤트_황금굴비_용돈박스.jpg" alt="추석특가_강아지옷">
+                                            <h4>추석 핸드메이드 황금굴비 용돈박스 생신 가족행사 추석선물</h4>
+                                            <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                            <div class="slide2-text"><p>50%</p><p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
+                                            <div class="slide2-text2"><p>17,500원</p><p>35,000원</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scr2">
+                                    <div class="swiper-button-prev2">
+                                        <i class="fa-solid fa-chevron-left"></i>
+                                    </div>
+                                    <div class="swiper-button-next2">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 카테고리 시작 제목란 -->
+        <div class="category_start">
+            <div class="category_title">
+                <img src="{{ url_for('static', filename='img/main/카테고리_제목.png') }}" alt="카테고리_제목">
+            </div>
+        </div>
+
+
+
+        <!-- 옷 카테고리 -->
+        <div class="clothes_category">
+            <div class="clothes-box">
+                <div class="clothes_start">
+                    <div class="clothes_start-title">
+                        <img src="{{ url_for('static', filename='img/main/옷 카테고리.png') }}" alt="옷 카테고리">
+                        <h3><i class="fa-solid fa-shirt"></i>이런 옷은 어때요?</h3>
+                        <p>Event Sale 상품도 만나보세요! </p>
+                        <button>바로가기</button>
+                    </div>
+                </div>
+                <div class="clothes_subject">
+                    <div class="swiper mySwiper3">
+                        <div class="swiper-wrapper wrapper3">
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복1-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복1-2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[MADE/긴팔ver.]대디 빈티지 포켓 데님 셔츠 남방</h3>
+                                        <div class="clothes-text-1">
+                                            <p>28%</p>
+                                            <p>39,900</p>
+                                        </div>
+                                        <p>35,910원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복2.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복2-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복2-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[MADE/2type]페이버릿 패치 루즈핏 니트</h3>
+                                        <div class="clothes-text-1">
+                                            <p>28%</p>
+                                            <p>35,900</p>
+                                        </div>
+                                        <p>32,310원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복3.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복3-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복3-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[인생티♥] 솔트 클린 반팔 티셔츠</h3>
+                                        <div class="clothes-text-1">
+                                            <p>43%</p>
+                                            <p>29,800</p>
+                                        </div>
+                                        <p>18,900원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복1-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복1-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>스껄 페인팅 맨투맨 남성복 <br>(4 COLOR)</h3>
+                                        <div class="clothes-text-1">
+                                            <p>63%</p>
+                                            <p>51,800</p>
+                                        </div>
+                                        <p>18,900원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복2.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복2-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복2-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[주문폭주] 빈티지 그래픽 오버핏 라운드 맨투맨</h3>
+                                        <div class="clothes-text-1">
+                                            <p>41%</p>
+                                            <p>52,900</p>
+                                        </div>
+                                        <p>30,960원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복3.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복3-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복3-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[당일/주문폭주] 오버핏 레터링 후드티 기모 후드...</h3>
+                                        <div class="clothes-text-1">
+                                            <p>66%</p>
+                                            <p>35,800</p>
+                                        </div>
+                                        <p>12,000원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복4.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복4-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복4-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[당일출고] 해피 반팔 티셔츠 (2 color)</h3>
+                                        <div class="clothes-text-1">
+                                            <p>66%</p>
+                                            <p>33,800</p>
+                                        </div>
+                                        <p>11,330원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복4.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복4-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복4-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[MADE/루즈핏]테일 스웨이드 차이나 크롭 자켓</h3>
+                                        <div class="clothes-text-1">
+                                            <p>28%</p>
+                                            <p>39,900</p>
+                                        </div>
+                                        <p>35,910원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복5.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복5-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복5-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[오버핏 데님 점퍼] 자켓 집업 아우터 (2 col)</h3>
+                                        <div class="clothes-text-1">
+                                            <p>20%</p>
+                                            <p>49,900</p>
+                                        </div>
+                                        <p>39,900원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복5.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복5-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[2장 구매할인]숏기장&롱기장 코듀로이 와이드 팬츠</h3>
+                                        <div class="clothes-text-1">
+                                            <p>71%</p>
+                                            <p>96,900</p>
+                                        </div>
+                                        <p>27,680원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복6.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복6-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/여성복6-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[당일출고] 슬로우 오버 루즈핏 투웨이 후드집업</h3>
+                                        <div class="clothes-text-1">
+                                            <p>14%</p>
+                                            <p>41,900</p>
+                                        </div>
+                                        <p>36,030원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복6.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복6-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="clothes-img-box" src="./img/남성복6-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="clothes-text">
+                                        <h3>[당일출고] 블록코어 나일론 후드티 바람막이 퍼펙트</h3>
+                                        <div class="clothes-text-1">
+                                            <p>41%</p>
+                                            <p>56,000</p>
+                                        </div>
+                                        <p>32,930원</p>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- 쿠폰 / 이벤트 Slider -->
+        <div class="coupon_slider">
+            <div class="coupon_all">
+                <div class="coupon_start">
+                    <div class="swiper mySwiper4">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_추석쿠폰.webp') }} alt="추석쿠폰" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_친구랑함께.webp') }} alt="친구랑함께"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_폰케이스쿠폰.webp') }} alt="폰케이스쿠폰"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_메가세일쿠폰.webp') }} alt="메가세일쿠폰"/>
+                        </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                        <div class="scr4">
+                            <div class="swiper-button-prev4">
+                                <i class="fa-solid fa-chevron-left scr3-i-1"></i>
+                            </div>
+                            <div class="swiper-button-next4">
+                                <i class="fa-solid fa-chevron-right scr3-i-2"></i>
+                            </div>
+                        </div>
+                </div>
+                <div class="coupon_end">
+                    <div class="coupon-box">
+                        <h4>Opick에서 더 많은 할인과 <br>
+                        혜택을 확인하세요!</h4>
+                        <img src={{ url_for('static', filename='img/main/4910_QR코드.png') }} alt="QR코드">
+                        <p>QR코드를 스캔해 <br>
+                        사이트를 확인해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 패션소품 카테고리 -->
+             <div class="fashion_category">
+                <div class="fashion-box">
+                    <div class="fashion_start">
+                        <div class="fashion_start-title">
+                            <img src={{ url_for('static', filename='img/main/패션소품_카테고리.png') }}  alt="패션소품_카테고리">
+                            <h3><i class="fa-regular fa-gem"></i>당신의 옷에 Point를!</h3>
+                            <p>각종 패션 소품을 확인하세요! </p>
+                            <button>바로가기</button>
+                        </div>
+                    </div>
+                    <div class="fashion_subject">
+                        <div class="swiper mySwiper5">
+                            <div class="swiper-wrapper wrapper5">
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품1.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품1-1.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품1-2.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>[당일발송]가미코치 나비 체인 목걸이</h3>
+                                            <div class="fashion-text-1">
+                                                <p>10%</p>
+                                                <p>21,900</p>
+                                            </div>
+                                            <p>19,710원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품2.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품2-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>*스테디셀러*팡테옹 목걸이 STJ-NB1186</h3>
+                                            <div class="fashion-text-1">
+                                                <p>71%</p>
+                                                <p>60,000</p>
+                                            </div>
+                                            <p>16,900원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품3.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품3-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>[당일발송]빈티지 데미지드 워싱캡 남녀공용볼캡</h3>
+                                            <div class="fashion-text-1">
+                                                <p>55%</p>
+                                                <p>29,900</p>
+                                            </div>
+                                            <p>13,340원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품6.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품6-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>러블리한 여리여리감성 네잎클로버 팔찌</h3>
+                                            <div class="fashion-text-1">
+                                                <p>78%</p>
+                                                <p>80,000</p>
+                                            </div>
+                                            <p>17,500원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품9.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품9-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>카시오 LTP-V007L-7E1 손목시계 실버블랙</h3>
+                                            <div class="fashion-text-1">
+                                                <p>36%</p>
+                                                <p>50,000</p>
+                                            </div>
+                                            <p>31,840원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품4.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>폭스바겐 야광 나비 팔찌 목걸이 택1</h3>
+                                            <div class="fashion-text-1">
+                                                <p>73%</p>
+                                                <p>60,000</p>
+                                            </div>
+                                            <p>15,900원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품8.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품8-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fashion-text">
+                                        <h3>나이키 헤리티지 H86 퓨추라 워시드 볼캡 모자</h3>
+                                        <div class="fashion-text-1">
+                                            <p>80%</p>
+                                            <p>88,800</p>
+                                        </div>
+                                        <p>17,060원</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품5.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품5-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>MADE[전체써지컬] Love Poem BR / 체리셰블</h3>
+                                            <div class="fashion-text-1">
+                                                <p>17%</p>
+                                                <p>18,100</p>
+                                            </div>
+                                            <p>14,900원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품10.webp" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품10-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="fashion-text">
+                                            <h3>[당일출고]모던 베이직 라운드 뿔테 패션 안경</h3>
+                                            <div class="fashion-text-1">
+                                                <p>66%</p>
+                                                <p>25,800</p>
+                                            </div>
+                                            <p>8,650원</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide box1">
+                                    <div class="swiper mySwiperInner1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="fashion-img-box" src="./img/패션소품7.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fashion-text">
+                                        <h3>[양말1위 최저가]4계절 주름 롱 양말 (24SO006)</h3>
+                                        <div class="fashion-text-1">
+                                            <p>46%</p>
+                                            <p>9,900</p>
+                                        </div>
+                                        <p>5,310원</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -48,96 +753,372 @@
 
 
 
-            <!-- nav -->
-            <div class="nav">
-                <nav class="nav-all">
-                    <div><i class="fa-solid fa-shirt"></i><a href="{{ url_for('items._list') }}"><br>Clothes</a></div>
-                    <div><i class="fa-solid fa-book"></i><br> Books</div>
-                    <div><i class="fa-regular fa-gem"></i><br>Fashion<br>accessories</div>
-                    <div><i class="fa-solid fa-icons"></i><br>Other</div>
-                    <div><i class="fa-solid fa-thumbs-up"></i><br>Review</div>
-                    <div><i class="fa-solid fa-users-gear"></i><br> Individual /<br>Company</div>
-                </nav>
+        <!-- 잡화 카테고리 -->
+        <div class="other_category">
+            <div class="other-box">
+                <div class="other_start">
+                    <div class="other_start-title">
+                        <img src="{{ url_for('static',filename='img/main/잡화_카테고리.png') }}" alt="잡화_카테고리_제목">
+                        <h3><i class="fa-solid fa-icons"></i>당신의 작품이 있나요?</h3>
+                        <p>환상적인 당신의 작품을 사람들에게
+                            <br>뽐내세요!</p>
+                        <button>바로가기</button>
+                    </div>
+                </div>
+                <div class="other_subject">
+                    <div class="swiper mySwiper6">
+                        <div class="swiper-wrapper wrapper6">
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="other-text">
+                                        <h3>[거울 내장] 베어키링 모듈 크로스백_블랙</h3>
+                                        <div class="other-text-1">
+                                            <p>49%</p>
+                                            <p>89,000</p>
+                                        </div>
+                                        <p>44,720원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화2.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화2-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화2-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="other-text">
+                                        <h3>아이폰 17 다마고치 외계인 실리콘 충격보호 케 ...</h3>
+                                        <div class="other-text-1">
+                                            <p>62%</p>
+                                            <p>28,900</p>
+                                        </div>
+                                        <p>10,700원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화3.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화3-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="other-text">
+                                        <h3>멋쟁이 토마토 지갑 데님 카드지갑 파우치</h3>
+                                        <div class="other-text-1">
+                                            <p>43%</p>
+                                            <p>27,900</p>
+                                        </div>
+                                        <p>15,900원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화4.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화4-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="other-text">
+                                        <h3>꼬북이 인형 만들기 - 토마토, 표고버섯, 메론빵, ...</h3>
+                                        <div class="other-text-1">
+                                            <p>31%</p>
+                                            <p>41,000</p>
+                                        </div>
+                                        <p>27,900원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화5.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화5-1.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화5-2.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="other-text">
+                                        <h3>[당일출고]포코포코 아이폰케이스 폰꾸 젤리</h3>
+                                        <div class="other-text-1">
+                                            <p>36%</p>
+                                            <p>55,000</p>
+                                        </div>
+                                        <p>34,800원</p>
+                                    </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화6.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화6-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other-text">
+                                    <h3>귀여운 부적 스티커! 행운 가득 좋은 하루 복 스티 ...</h3>
+                                    <div class="other-text-1">
+                                        <p>47%</p>
+                                        <p>35,8000</p>
+                                    </div>
+                                    <p>18,240원</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화7.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화7-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other-text">
+                                    <h3>[MAEDE]마라 고앵이 LE 키캡 키링(1구)</h3>
+                                    <div class="other-text-1">
+                                        <p>39%</p>
+                                        <p>13,000</p>
+                                    </div>
+                                    <p>7,900원</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화8.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화8-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other-text">
+                                    <h3>똥개 오늘 해야 데늖고 포스트잇</h3>
+                                    <div class="other-text-1">
+                                        <p>66%</p>
+                                        <p>35,800</p>
+                                    </div>
+                                    <p>12,000원</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화9.jpg" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화9-1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other-text">
+                                    <h3>냥이네 과수원 양모펠트 가방고리 키링</h3>
+                                    <div class="other-text-1">
+                                        <p>30%</p>
+                                        <p>3,000</p>
+                                    </div>
+                                    <p>2,100원</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide box1">
+                                <div class="swiper mySwiperInner2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화10.webp" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img class="other-img-box" src="./img/잡화10-1.webp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="other-text">
+                                    <h3>노란색, 초로객 아이템 말랑 투명 스티커 A6</h3>
+                                    <div class="other-text-1">
+                                        <p>66%</p>
+                                        <p>35,800</p>
+                                    </div>
+                                    <p>12,000원</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
 
-
-            <!-- Main Slider -->
-            <div class="main_slider">
-
+        <!-- Q&A 제목 입력 -->
+        <div class="QNA_top">
+            <div class="QNA_title">
+                <img src="{{ url_for('static', filename='img/main/게시판_제목.png') }}" alt="게시판_제목">
             </div>
+        </div>
 
 
 
-            <!-- 추석 이벤트 상품 -->
-            <div class="event">
-
+        <!-- Q&A 입력 -->
+        <div class="QNA_bottom">
+            <div class="QNA-all">
+                <div class="QNA-text">
+                    <div class="QNA_user_img">
+                        <img src="./img/게시판_프로필사진1.jpg" alt="">
+                        <h5>611FD492A49_치치</h5>
+                    </div>
+                    <div class="QNA_user_text">
+                        <div class="QNA-group1">
+                            <P> Q. 배송이 완료되었다는 알림이 왔는데 물건이 오지 않았으면 어떻게 해야하나요?</P>
+                            <p>[주문 ∙ 배송 조회]</p>
+                        </div>
+                        <p> OPick에서는 기업/작가님이 출고 후 운송장 번호를 등록하면 상품이 발송되었다는 알림을 보내드립니다. <br>
+                        이후 택배사의 배송 상황에 따라 2~3일 이내에 고객님께 작품이 도착합니다. (배송지, 출고일 등에 따라 <br>
+                        배송 완료까지 소요되는 기간은 다를 수 있습니다.) <br>
+                        만약 연락을 받았음에도 상품 도착이 확인되지 않을 경우 택배사나 기업/작가님, 또는 고객센터로 연락 바랍니다.</p>
+                    </div>
+                </div>
+                <div class="QNA-text">
+                    <div class="QNA_user_img">
+                        <img src="./img/게시판_프로필사진2.jpg" alt="">
+                        <h5>5SFT6W8D4S_짱구</h5>
+                    </div>
+                    <div class="QNA_user_text">
+                        <div class="QNA-group1">
+                            <P> Q. 주문한 작품과 다른 작품이 도착했어요.</P>
+                            <p>[주문 ∙ 배송 조회]</p>
+                        </div>
+                        <p>주문한 상품과 받은 상품이 다른 경우, 교환 혹은 환불 신청이 가능합니다. <br>
+                        신청 전에 판매 브랜드/작가님과 작품 상태에 대해 충분한 소통을 진행해주세요. <br>
+                        - 별도의 협의 없이 교환 혹은 환불을 신청할 경우, 신청이 거부될 수 있고 이로 인한 추가 비용이 발생할 수 있습니다. <br>
+                        - 상품 문제로 인한 교환 혹은 환불이 아니라면 발생하는 배송비는 고객님께서 부담하게 됩니다.</p>
+                    </div>
+                </div>
+                <div class="QNA-text">
+                    <div class="QNA_user_img">
+                        <img src="./img/게시판_프로필사진3.jpg" alt="">
+                        <h5>S6F4Y78WSF_카피바라</h5>
+                    </div>
+                    <div class="QNA_user_text">
+                        <div class="QNA-group1">
+                            <P> Q. 반품 방법과 가능 기준이 궁금합니다.</P>
+                            <p>[취소 ∙ 반품 ∙ 교환]</p>
+                        </div>
+                        <p>방법 - 교환 또는 환불 신청을 접수하더라도 택배사 수거나 방문 접수가 진행되지 않습니다. <br>
+                        택배 접수가 필요하다면 고객님 또는 기업/작가님께서 택배사 고객센터에 문의해주시기 바랍니다. <br>
+                        기준 - 소비자 보호법에 의거하여 작품 수령 후 7일 이내에 교환 / 반품을 진행할 수 있습니다. <br>
+                        단, 일부 상품은 단순 변심에 의한 교환 / 반품이 제한 될 수 있습니다. </p>
+                    </div>
+                </div>
+                <div class="QNA_last">
+                    <p>더욱 자세한 사항은 고객센터로 문의 바랍니다.</p>
+                </div>
             </div>
+                <!-- <div class="QNA-logo">
+                    <img src="./img/찐막로고.png" alt="">
+                </div> -->
+        </div>
+
+
+        <!-- 네비 연결, 게시판 로고 의견 묻기, main슬라이더 길이 -->
+
+
+        <!-- footer top -->
+        <div class="footer_top">
+            <img src="./img/footer_위_사진.jpg" alt="">
+        </div>
 
 
 
-            <!-- 카테고리 시작 제목란 -->
-            <div class="category_start">
-
+        <!-- footer -->
+        <div class="footer">
+            <div class="footer-all">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='img/main/찐찐찐막로고.png') }}" alt="">
+                </div>
+                <div class="footer-text">
+                    <div>
+                        <ul class="footer-text1">
+                            <li>고객 안내</li>
+                            <li>이용 안내</li>
+                            <li>안전 정책</li>
+                            <li>회사 소개</li>
+                            <li>공지사항</li>
+                            <li>자주 묻는 질문</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="footer-text1">
+                            <li>오핑몰 소개</li>
+                            <li>회사 소개</li>
+                            <li>채용 안내</li>
+                            <li>팀 블로그</li>
+                            <li>개인정보 처리방침</li>
+                            <li>고객센터</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="footer-text1">
+                            <li>About Store</li>
+                            <li>회사명(주) : 오핑몰</li>
+                            <li>주소 : 경기도 수원시 팔달구 권광로 146 벽산그랜드코아 4층 404호</li>
+                            <li>대표 : 김카피</li>
+                            <li>사업자등록번호 : 012-34-56789</li>
+                            <li>통신판매업 신고번호 : 012-345-6789</li>
+                            <li>대표번호 : 010-1234-5678</li>
+                            <li>메일주소 : 5pickshop@naver.com</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-
-
-            <!-- 옷 카테고리 -->
-            <div class="clothes_category">
-
+            <div class="footer-sub">
+                <div class="footer-sub-all">
+                    <div class="footer-icon">
+                        <a href="https://www.naver.com/"><img src="{{ url_for('static', filename='img/main/sub/naver.png') }}" alt="naver_logo"></a>
+                        <a href="https://www.youtube.com/"><img src="{{ url_for('static', filename='img/main/sub/youtube.png') }}" alt="youtube_logo"></a>
+                        <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='img/main/sub/instar.png') }}" alt="instagram_logo"></a>
+                        <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='img/main/sub/f-book.png') }}" alt="facebook_logo"></a>
+                        <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=ko"><img src="{{ url_for('static', filename='img/main/sub/kotalk.png') }}" alt="kakao_logo"></a>
+                    </div>
+                    <p>Copyright © All Right Reserved</p>
+                    <div class="footer-card">
+                        <img src="{{ url_for('static', filename='img/main/card1.svg') }}" alt="카드1">
+                        <img src="{{ url_for('static', filename='img/main/card2.svg') }}" alt="카드2">
+                        <img src="{{ url_for('static', filename='img/main/card3.svg') }}" alt="카드3">
+                        <img src="{{ url_for('static', filename='img/main/card4.svg') }}" alt="카드4">
+                        <img src="{{ url_for('static', filename='img/main/card5.svg') }}" alt="카드5">
+                    </div>
+                </div>
             </div>
-
-
-
-            <!-- 쿠폰 / 이벤트 Slider -->
-            <div class="coupon_slider">
-
-            </div>
-
-
-
-            <!-- 패션소품 카테고리 -->
-            <div class="fashion_category">
-
-            </div>
-
-
-
-            <!-- 잡화 카테고리 -->
-            <div class="other">
-
-            </div>
-
-
-            
-            <!-- 리뷰 제목 입력 -->
-            <div class="review_title">
-
-            </div>
-
-
-
-            <!-- 리뷰 입력 -->
-            <div class="review">
-
-            </div>
-
-
-
-            <!-- footer top -->
-            <div class="footer_top">
-
-            </div>
-
-
-
-            <!-- footer -->
-            <div class="footer">
-
-            </div>
-
-        <!--부트 스트렙 js-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+<script src="{{ url_for('static', filename='main_js/main_slide.js') }}"></script>
 </body>
 </html>

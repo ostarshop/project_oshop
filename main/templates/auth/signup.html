@@ -1,43 +1,66 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
+
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth/auth.css') }}">
+
+<div class="auth-container">
+    <div class="auth-box signup-shadow">
+        <!-- 로고 영역 -->
+        <div class="auth-logo signup-border">
+{#          <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/sub/logo.png') }}" alt="짝퉁로고"></a>#}
+          <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}" alt="짝퉁로고"></a>
 
 
-<div class="container">
-    <h5 class="my-3 border-bottom pb-2">회원 가입</h5>
-    <form method="post">
-        {% include 'form_errors.html' %}
-        <div class="mb-3">
-            <label for="Userid">유저 아이디</label>
-            <input type="text" name="userid" id="userid" class="form-control" value='{{ form.userid.data or""}}'>
+             <div class="auth-signup-text">
+                <span>5!</span>
+                <span>Pick</span>
+                <span>Mall</span>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="password1">비밀번호</label>
-            <input type="password" name="password1" id="password1" class="form-control" value='{{ form.password1.data or""}}'>
-        </div>
-        <div class="mb-3">
-            <label for="password2">비밀번호 확인</label>
-            <input type="password" name="password2" id="password2" class="form-control" value='{{ form.password2.data or""}}'>
-        </div>
-        <div class="mb-3">
-            <label for="Username">닉네임</label>
-            <input type="text" name="username" id="username" class="form-control" value='{{ form.username.data or""}}'>
-        </div>
-        <div class="mb-3">
-            <label for="Phone">전화번호</label>
-            <input type="text" name="phone" id="phone" class="form-control" value='{{ form.phone.data or""}}'>
-        </div>
-        <div class="mb-3">
-            <label for="Address">주소</label>
-            <input type="text" name="address" id="address" class="form-control" value='{{ form.address.data or""}}'>
-        </div>
-        <div class="mb-3">
-            <label for="email">이메일</label>
-            <input type="email" name="email" id="email" class="form-control" value='{{ form.email.data or""}}'>
-        </div>
-        <button type="submit" class="btn btn-primary">가입하기</button>
 
+        <h2>회원가입</h2>
+        <form method="post">
+            {{ form.csrf_token }}
+            {% include "form_errors.html" %}
 
-    </form>
+            <div class="mb-3">
+                {{ form.userid.label(class="form-label") }}
+                {{ form.userid(class="form-control", placeholder="아이디") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="닉네임") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="이메일 주소") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.phone.label(class="form-label") }}
+                {{ form.phone(class="form-control", placeholder="휴대폰 번호") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.address.label(class="form-label") }}
+                {{ form.address(class="form-control", placeholder="주소") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password1.label(class="form-label") }}
+                {{ form.password1(class="form-control", placeholder="비밀번호") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.password2.label(class="form-label") }}
+                {{ form.password2(class="form-control", placeholder="비밀번호 확인") }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">회원가입</button>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-link">이미 계정이 있으신가요? 로그인</a>
+        </form>
+    </div>
 </div>
-
 {% endblock %}

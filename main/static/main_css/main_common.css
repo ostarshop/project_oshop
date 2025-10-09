@@ -9,37 +9,61 @@ a {text-decoration: none; color: #333;}
 /* --------------------------------------------------------------- */
 /* 위로 올라가기 버튼 (지피티 참고) */
 /* --------------------------------------------------------------- */
+.back-to-top {width: 50px; height: 50px; background: #49af05;  display: none; position: fixed; border-radius: 50%; bottom: 30px;
+right: 30px; color: #fff; padding: 12px 17px; cursor: pointer; z-index: 1000; font-weight: bolder;}
+/* display:none 처음에 안 보이게, position:fixed 위치 고정 */
 
+.back-to-top.visible {display: block; opacity: 1;}
 
 
 /* --------------------------------------------------------------- */
 /* Header */
 /* --------------------------------------------------------------- */
 .header {width: 100%; height: 380px; display: flex; justify-content: center;}
-.header-top {display: flex; justify-content: space-between; width: 1200px; height: 75px; border-bottom: 1px solid #4444441c;}
+.header-top {display: flex; justify-content: space-between; width: 1200px; height: 75px;  border-bottom: 5px solid #0097196e;}
 .header-t-text {display: flex; align-items: center;}
-.header-t-text p {padding-left: 10px; cursor: pointer;}
+.header-t-text li {padding-left: 10px; cursor: pointer;}
+.header-t-text a:hover {color:rgb(22,180,22); transition:all 0.3;}
 .header-p-1:hover {transition: all 0.3s; color: rgb(22, 180, 22);}
-.logo img {width: 90px; height: 72px; margin-left: 30px;}
+.logo img {width: 180px; height: 65px; margin-top: 4px;}
 .header-text {width: 1200px; height: 305px; background-color: aqua;}
 
-.header-bottom {width: 1200px; height: 305px; display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 1px solid #4444441c;}
-.header-search-box {display: flex;}
+.header-bottom {width: 1200px;  height: 305px; display: flex; justify-content: center; align-items: center; text-align: center;  border-bottom: 1px solid #4444441c;}
 .header-b-text {font-weight: 450; letter-spacing: 2px; padding-bottom: 60px; font-size: 30px;}
-.header-search {width: 400px; height: 50px; border-bottom-left-radius: 10px; border-top-left-radius: 10px; outline: none; border: 1px solid #000000; padding-left: 18px; font-size: 17px;}
-.search-button {width: 90px; height: 50px; border: 1px solid #000000; border-bottom-right-radius: 10px; border-top-right-radius: 10px; cursor: pointer; background-color: rgb(84, 208, 50); color: white; border-left: none;}
-.search-button:hover {background-color:rgb(37, 161, 2);}
-.search-button i {font-size: 18px;}
+.header-search-box {display: flex; height: 48px;}
+
+.header-search {width: 450px; border: 1px solid #00CD26;border-radius: 4px; cursor:text; outline: none; padding-left: 15px;}
+.search-button {width: 80px; border: none; background-color: #00CD26;color: white; border-radius: 4px; cursor: pointer; margin-left: 7px;}
+.search-button:hover {background-color: #00941B;}
 
 
 
 /* --------------------------------------------------------------- */
 /* footer top */
 /* --------------------------------------------------------------- */
-.footer_top{width: 100%; height: 200px; background-color: rgb(185, 150, 217);}
+.footer_top{width: 100%; height: 200px; display: flex; justify-content: center; align-items: center;
+ margin: 30px 0px;}
+.footer_top img {width: 1200px;}
 
 
 /* --------------------------------------------------------------- */
 /* footer */
 /* --------------------------------------------------------------- */
-.footer {width: 100%; height: 450px; background-color: aquamarine;}
+.footer { width: 100%; height: 500px; display: flex; flex-direction: column; display: flex; justify-content: center; align-items: center;}
+.footer-all {margin-bottom: 50px; width: 1200px; height: 500px; display: flex; justify-content: center; align-items: center;}
+.footer-logo {width: 400px; display: flex; justify-content: center; }
+.footer-logo img {width: 150px; background-color: white; opacity: 0.4;}
+.footer-text {margin-left: 20px; width: 800px; height: 300px; display: flex;
+justify-content: space-between;}
+
+.footer-text1 li:nth-of-type(1) {color: black; cursor: default; font-size: 22px; font-weight: 450;
+border-bottom: 1px solid #4444441c;}
+.footer-text1 li:nth-of-type(1):hover {color: black;}
+.footer-text1 li {padding-top: 10px; cursor: pointer; font-size: 15px; font-weight: 400; padding-bottom: 10px;}
+.footer-text1 li:hover {color: #00941B;}
+
+.footer-sub {width: 100%; height: 70px;}
+.footer-sub-all {width: 1200px; height: 70px; border-top: 1px solid #4444441c; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-icon img {width: 45px; height: 45px; margin-right: 10px;}
+
+.footer-card img {width: 55px;}
