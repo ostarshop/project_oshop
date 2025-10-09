@@ -8,15 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5PICK</title>
 
+    {#부트스트랩#}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
-
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_index.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='create/new.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='create/new_common.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.css') }}">
+    {#아이콘#}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_common.css') }}">
+
+{% block sub %}
+{% endblock %}
+
+{% block create %}
+{% endblock %}
+
+{% block mypage %}
+{% endblock %}
+
+
+
+
+
 </head>
 <body>
         <!-- 위로 올라가기 버튼 (지피티 참고) -->
@@ -28,7 +39,7 @@
     <header>
         <div class="head">
             <div class="logo">
-                <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/sub/logo.png') }}" alt="짝퉁로고"></a>
+                <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}" alt="짝퉁로고"></a>
             </div>
             <div class="search">
                 <input type="text" placeholder="검색어를 입력하세요">
@@ -46,17 +57,18 @@
             </ul>
         </div>
     </header>
-<!--네비게이션-->
 
 
 <!--    기본 템플릿 안에 삽입될 내용 start-->
 {% block content %}
 {% endblock %}
 <!--기본 템플릿 안에 삽입될 내용 end-->
+
+
  <div class="footer">
             <div class="footer-all">
                 <div class="footer-logo">
-                    <img src="./img/찐찐찐막로고.png" alt="">
+                    <img src="{{ url_for('static', filename='img/main/찐찐찐막로고.png') }}" alt="">
                 </div>
                 <div class="footer-text">
                     <div>
@@ -113,9 +125,5 @@
                 </div>
             </div>
         </div>
-
-<!--부트 스트렙 js-->
-
-
 </body>
 </html>

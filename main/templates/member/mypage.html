@@ -1,13 +1,9 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
-    <link rel="stylesheet" href="../../static/mypage/mypage.css">
-</head> -->
+
 {% extends 'base.html' %}
+{% block mypage %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.js') }}">
+{% endblock %}
 {% block content %}
 
     <div class="mypage">
@@ -20,8 +16,6 @@
                 <div class="mytop">
                     <img class="myimg" src="{{ url_for('static', filename=user.image) }}" alt="">
                     <div>
-                        <!-- 상품등록 -->
-                        <div class="create"><a href="{{ url_for('member.create') }}">임시로 상품등록 버튼만듬 추후 이동</a> </div>
                         <!-- 이미지 업로드 -->
                         <form method="post" action="{{ url_for('member.mypage') }}" enctype="multipart/form-data">
 
@@ -50,14 +44,78 @@
             </div>
             <!-- 등록한 상품기록 -->
             <div class="post">
-
-                상품 등록 기록 조회
+                <div class="p-move">
+                    <!-- 상품등록 이동해 -->
+                    <p class="p-title">상품 등록 기록 조회</p>
+                    <div class="create"><a href="{{ url_for('member.create') }}">상품 등록</a></div>
+                </div>
+                {#상품 등록 게시판#}
+                <div class="table-wrap">
+                    <table class="post-table">
+                        <thead>
+                        <tr class="post-title">
+                            <th scope="col">번호</th>
+                            <th scope="col">상품명</th>
+                            <th scope="col">등록일</th>
+                            {#<th scope="col">조회</th>#}
+                            <th scope="col">상태</th>
+                        </tr>
+                        </thead>
+                        {#js가 자동으로 채움#}
+                        <tbody id="productBody">
+                        {% if product_list %}
+                        {% for product in product_list %}
+                        <tr>
+                            <td>{{product_list.total - (product_list.page -1) * product_list.per_page - loop.index0}}</td>
+                            <td>
+{#                                <a href="{{ url_for('product.detail', product_id=product.id) }}/">{{product.subject}}</a>#}
+{#                                {% if question.answers_set|length>0 %}#}
+{#                                <span class="text-danger small mx-2">[{{ question.answers_set|length }}]</span>#}
+{#                                {% endif %}#}
+                            </td>
+{#                            <td>{{question.user.username}}</td>#}
+{#                            <td>{{ question.create_date | datetime }}</td>#}
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">등록한 상품이 없습니다.</td>
+                        </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- 댓글기록 -->
         <div class="comment">
-            댓글 기록 조회
+            <div class="c-move">
+                <p>댓글 기록 조회</p>
+            </div>
+
+            <!-- 댓글 게시판 -->
+            <div class="comment-table-wrap">
+                <table class="comment-table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>댓글 내용</th>
+                            <th>작성일</th>
+                            <th>상태</th>
+                            <th>관리</th>
+                        </tr>
+                    </thead>
+                    <tbody id="commentBody">
+                        <tr>
+                            <td colspan="5" style="color: #999; text-align: center;padding: 30px">
+                                등록된 댓글이 없습니다.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
 
 {% endblock %}

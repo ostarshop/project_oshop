@@ -1,0 +1,151 @@
+/* auth.css : 로그인/회원가입 전용 스타일 */
+
+/* 전체 페이지 폭은 header/footer와 동일하게 */
+.auth-container {
+    max-width: 1200px;   /* header/footer 기준 폭 */
+    margin: 60px auto;
+    padding: 20px;
+}
+
+/* 로그인/회원가입 박스는 좁게 */
+.auth-box {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.auth-box h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+}
+
+.auth-box .form-control {
+    border-radius: 8px;
+    margin-bottom: 18px;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.auth-box .btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.auth-box .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.auth-box .btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.auth-box .btn-link {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.auth-box .btn-link:hover {
+    text-decoration: underline;
+}
+
+/* 로고 + 사이트명 영역 */
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    background: transparent;
+    gap: 30px; /* 로고와 글자 사이 간격 */
+}
+
+.auth-logo img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.auth-login-text {
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    flex: 1;
+    line-height: 1.1;
+    background: green;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* 글자를 투명 처리 */
+    background-clip: text;
+}
+
+.auth-signup-text {
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    flex: 1;
+    line-height: 1.1;
+    background: blue;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* 글자를 투명 처리 */
+    background-clip: text;
+}
+
+.auth-login-text span {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+}
+
+.auth-signup-text span {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: block;
+}
+
+/* 페이지별 테두리 색상 */
+.auth-logo.login-border {
+    border: 5px solid #28a745; /* 녹색 (로그인 페이지) */
+}
+
+.auth-logo.signup-border {
+    border: 5px solid #007bff; /* 파란색 (회원가입 페이지) */
+}
+
+/* 공통 박스 스타일 */
+.auth-box {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 기본 그림자 */
+    transition: box-shadow 0.3s ease;
+}
+
+/* 로그인 전용 그림자 (녹색) */
+.auth-box.login-shadow {
+    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.35); /* 초록색 그림자 */
+}
+
+/* 회원가입 전용 그림자 (파란색) */
+.auth-box.signup-shadow {
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.35); /* 파란색 그림자 */
+}

@@ -13,6 +13,13 @@
 .title-box {display: flex;justify-content: center;align-items: center;margin: 25px;}
 .title-box input {width: 1150px;height: 50px; border: 1px solid #00CD26; border-radius: 4px;cursor: pointer;padding: 20px;outline: none;}
 
+/* 몸통3 */
+#slider3 {width: 100%; height: 150px;}
+/*제목*/
+.setting {width: 1200px;height: 150px;margin: 0 auto;display: flex;}
+.title-setting {display: flex;align-items: center; gap: 150px; margin: 0 auto;}
+.title-setting input {width: 500px;height: 50px; border: 1px solid #00CD26; border-radius: 4px;cursor: pointer;padding: 20px;outline: none; }
+
 /* 몸통4 */
 #slider4 {width: 100%;height: 500px;}
 /* 판매글 내용 */

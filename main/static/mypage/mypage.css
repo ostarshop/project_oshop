@@ -61,17 +61,6 @@ q::before, q::after {
   content: none;
 }
 
-/* 6) 링크, 이미지, 미디어 */
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
 
 /* 7) 폼 요소 기본 스타일 통일 */
 button, input, select, textarea {
@@ -130,20 +119,19 @@ table {
   }
 
 /* 자기정보 */
-.my{width: 400px; height: 450px; padding: 10px; position: absolute; border: solid 2px #99ff99 ; border-radius: 15px;}
+.my{width: 400px; height: 450px; padding: 10px; position: absolute; border: solid 5px #CFE9D5 ; border-radius: 15px;}
 
 .mytop{display: flex;}
 /* 자기사진 */
-.myimg{width: 150px; height: 200px; border: solid  #f5f5f5;}
-/* 사진 링크 */
-.img_url{width: 220px; height: 80px; margin-left:5px; margin-top:40px;}
+.myimg{width: 150px; height: 200px; border: solid #CFE9D5;}
+/* 사진 링크 수정중 */
+.img_url{width: 220px; height: 80px; margin-left:25px; margin-top:60px;}
+.img_url input {width: 88px;}
 /* 사진 등록버튼 */
-.image_submit{width: 80px ;background-color: #00CD26; border-radius: 10px; margin-top: 5px;}
-/* 상품등록 페이지로 이동 */
-.create{width: 150px; height: 30px; margin: 0 auto; margin-top: 45px; background-color: #00CD26; border-radius: 10px; line-height: 30px ; text-align: center }
+.image_submit{width: 80px;height: 30px; background-color: #00CD26; border-radius: 10px; margin: 50px 100px;font-size: 12px;color: #fff;}
+.image_submit:hover {background-color: #00941B;}
 
-
-.mymid { width: 380px ;height: 120px; margin-bottom:10px; padding: 10px;  }
+.mymid { width: 380px ;height: 120px; margin-bottom:10px; padding: 10px;}
 /* 닉네임 */
 .name{margin-bottom:5px; margin-left: 5px;}
 /* 유저 닉네임*/
@@ -161,9 +149,48 @@ table {
 .address_db{border: solid  #f5f5f5; padding:5px 8px ; border-radius: 20px;}
 
 /* 등록한 상품 기록 */
-.post{width: 700px; height: 450px; margin-left:auto ;  border: solid 2px #99ff99 ; border-radius: 15px;}
+.post{width: 700px; height: 450px; margin-left:auto ;  border: solid 2px #CFE9D5 ; border-radius: 15px;overflow: hidden;}
+
+/* 상품등록 페이지로 이동*/
+.p-move {display: flex;align-items: center;padding-left: 20px;gap: 5px;justify-content: start;}
+.p-title {position: relative;justify-content: start;top: 7px;font-weight: bold;color: gray;}
+.create{width: 110px; height: 35px;margin-top: 15px;margin-left: 400px; background-color: #00CD26; border-radius: 10px; line-height: 35px ; text-align: center;color: #fff;font-size: 15px; }
+.create:hover {background-color: #00941B;transition: 0.2s}
+
+/*상품 테이블*/
+.table-wrap {flex: 1;overflow-y: auto;border-radius: 5px;}
+.post-table {width: 90%;border-collapse: collapse;background-color: #fff; margin:10px auto;}
+.post-table thead {background-color: #c1ffce}
+.post-table th, td {padding: 8px;vertical-align: middle;border: none;font-size: 14px;}
+.post-table th{font-weight: 700;color: #333;}
+.post-table tbody tr:hover {background-color: #f6fffb;}
+/* 상품명 줄임(20자 내외) */
+.post-table td:nth-child(2) {display: inline-block;width: 20ch;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+
+/*상태 표시*/
+.status {font-weight: 600;}
+.p-status-on { color: #49B168; font-weight: 700; }   /* 판매중 */
+.p-status-off { color: #b5b5b5; font-weight: 700; }  /* 품절 */
+@media (max-width: 768px) {  .post {width:95%}  } /* 반응형 */
+
 
 /* 댓글기록 */
-.comment{width: 1200px; height: 500px; margin-top: 20px; border-radius: 15px;
-   border: solid 2px #99ff99 ;}
+.comment{width: 1200px; height: 500px; margin-top: 20px; border-radius: 15px;border: solid 2px #CFE9D5 ;}
+.c-move {display: flex;align-items: center;padding-left: 20px;justify-content: start;}
+.c-move p {position: relative;justify-content: start;top: 7px;font-weight: bold;color: gray;margin: 10px;}
 
+/* 댓글 테이블 */
+.comment-table-wrap {width: 95%;height: 400px;margin: 10px auto;overflow-y: auto;border-radius: 10px;}
+.comment-table {width: 100%;border-collapse: collapse;text-align: center;background-color: #fff;}
+.comment-table thead tr {background-color: #c1ffce;color: #333;font-weight: 600;}
+.comment-table th,td {border: none;padding: 10px 8px;vertical-align: middle;}
+
+/* 댓글 내용 제한 */
+.comment-table td.c-content {display: inline-block;width: 20ch;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+
+/* 댓글상태(?) */
+.c-status-on {color: #00C45c;font-weight: 700;}
+.c-status-off {color: #999;font-weight: 700;}
+
+/* 댓글 버튼 */
+.cbtn {padding: 5px 10px;border-radius: 6px;border: none;cursor:pointer;font-size: 13px;margin: 0 3px;display: inline-block;vertical-align: middle;}

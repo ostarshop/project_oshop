@@ -23,6 +23,7 @@ right: 30px; color: #fff; padding: 12px 17px; cursor: pointer; z-index: 1000; fo
 .header-top {display: flex; justify-content: space-between; width: 1200px; height: 75px;  border-bottom: 5px solid #0097196e;}
 .header-t-text {display: flex; align-items: center;}
 .header-t-text li {padding-left: 10px; cursor: pointer;}
+.header-t-text a:hover {color:rgb(22,180,22); transition:all 0.3;}
 .header-p-1:hover {transition: all 0.3s; color: rgb(22, 180, 22);}
 .logo img {width: 180px; height: 65px; margin-top: 4px;}
 .header-text {width: 1200px; height: 305px; background-color: aqua;}

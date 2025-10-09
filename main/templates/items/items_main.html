@@ -6,6 +6,7 @@
     <title>5PICK</title>
     
 
+
     <!-- swiper slide 연결 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -757,7 +758,7 @@
             <div class="other-box">
                 <div class="other_start">
                     <div class="other_start-title">
-                        <img src="./img/잡화_카테고리.png" alt="잡화_카테고리_제목">
+                        <img src="{{ url_for('static',filename='img/main/잡화_카테고리.png') }}" alt="잡화_카테고리_제목">
                         <h3><i class="fa-solid fa-icons"></i>당신의 작품이 있나요?</h3>
                         <p>환상적인 당신의 작품을 사람들에게
                             <br>뽐내세요!</p>
@@ -980,7 +981,7 @@
         <!-- Q&A 제목 입력 -->
         <div class="QNA_top">
             <div class="QNA_title">
-                <img src="./img/게시판_제목.png" alt="게시판_제목">
+                <img src="{{ url_for('static', filename='img/main/게시판_제목.png') }}" alt="게시판_제목">
             </div>
         </div>
 

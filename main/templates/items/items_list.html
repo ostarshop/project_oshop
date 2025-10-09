@@ -1,4 +1,10 @@
+
 {% extends 'base.html' %}
+{% block sub %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_common.css') }}">
+{% endblock %}
+
 {% block content %}
 
 {# 코드 작성은 이선 이후로 작성 바람#}
