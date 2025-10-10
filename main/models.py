@@ -46,6 +46,7 @@ class Product(db.Model):
     modify_date = db.Column(db.DateTime, nullable=True) # 글 수정시 수정시각 알려줌
     price = db.Column(db.String(15), nullable=False) # 가격 / 필수입력
     img_path = db.Column(db.String(200), nullable=True)  # 이미지 삽입시 사진이 아니라 이미지 저장 경로 추적 / 필수입력 아님
+    color = db.Column(db.String(50), nullable=True)
 
     # 작성자를 참조
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False) # 사용자 삭제시 작성글 삭제

@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
+from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import StringField, PasswordField, EmailField
-from wtforms.validators import DataRequired, Length, EqualTo, Email
+from wtforms.validators import DataRequired, Length, EqualTo, Email, NumberRange
 
 
 class UserCreateForm(FlaskForm):
@@ -18,3 +19,8 @@ class UserCreateForm(FlaskForm):
 class UserLoginForm(FlaskForm):
     userid = StringField('사용자 이름', validators=[DataRequired('아이디를 입력해주세요'), Length(min=3, max=25)])
     password = PasswordField('', validators=[DataRequired('비밀번호를 입력해주세요')])
+
+class ProductForm(FlaskForm):
+    title = StringField('상품명',validators=[DataRequired('상품명을 입력해주세요.')])
+    price = IntegerField('가격', validators=[DataRequired('기격을 입력해주세요.'), NumberRange(min=0, message='가격은 0원 이상이어야 합니다.')])
+    image_url = StringField('이미지 URL', validators=[DataRequired('이미지 주소를 입력해주세요.')])
