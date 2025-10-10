@@ -23,7 +23,7 @@ bp = Blueprint('member', __name__, url_prefix='/member')
 @bp.route('/mypage', methods=['GET', 'POST'])
 def mypage():
     form = UserCreateForm()
-    product_list = Product.query.order_by(Product.create_date.desc())
+    product_list = Product.query.order_by(Product.create_date)
     page = request.args.get('page', default=1, type=int) # 페이지
 
 
@@ -48,7 +48,7 @@ def mypage():
 
 
 
-    return render_template('member/mypage.html', user=g.user, form=form, page=page, Product_list=product_list)
+    return render_template('member/mypage.html', user=g.user, form=form, page=page, product_list=product_list)
 
 @bp.route('/create', methods=['GET'])
 def create():

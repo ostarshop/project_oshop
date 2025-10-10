@@ -1,8 +1,7 @@
-
 {% extends 'base.html' %}
 {% block mypage %}
     <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.js') }}">
+{#    <script src="{{ url_for('static', filename='mypage/mypage.js') }}"></script>#}
 {% endblock %}
 {% block content %}
 
@@ -19,7 +18,7 @@
                         <!-- 이미지 업로드 -->
                         <form method="post" action="{{ url_for('member.mypage') }}" enctype="multipart/form-data">
 
-                                {{ form.csrf_token }}
+                            {{ form.csrf_token }}
 
                             <div class="img_url">
                                 <label for="image">이미지 첨부</label>
@@ -31,15 +30,15 @@
                 </div>
                 <!-- 닉네임, 연락처 -->
                 <div class="mymid">
-                    <div class="name">닉네임 </div>
-                    <div class="name_db">{{user.username}}</div>
-                    <div class="phone">전화번호 </div>
-                    <div class="phone_db">{{user.phone}}</div>
+                    <div class="name">닉네임</div>
+                    <div class="name_db">{{ user.username }}</div>
+                    <div class="phone">전화번호</div>
+                    <div class="phone_db">{{ user.phone }}</div>
                 </div>
                 <!-- 주소 -->
                 <div class="mybottom">
                     <div class="address">주소</div>
-                    <div class="address_db"> {{user.address}}</div>
+                    <div class="address_db"> {{ user.address }}</div>
                 </div>
             </div>
             <!-- 등록한 상품기록 -->
@@ -61,29 +60,64 @@
                             <th scope="col">상태</th>
                         </tr>
                         </thead>
-                        {#js가 자동으로 채움#}
                         <tbody id="productBody">
                         {% if product_list %}
-                        {% for product in product_list %}
-                        <tr>
-                            <td>{{product_list.total - (product_list.page -1) * product_list.per_page - loop.index0}}</td>
-                            <td>
-{#                                <a href="{{ url_for('product.detail', product_id=product.id) }}/">{{product.subject}}</a>#}
-{#                                {% if question.answers_set|length>0 %}#}
-{#                                <span class="text-danger small mx-2">[{{ question.answers_set|length }}]</span>#}
-{#                                {% endif %}#}
-                            </td>
-{#                            <td>{{question.user.username}}</td>#}
-{#                            <td>{{ question.create_date | datetime }}</td>#}
-                        </tr>
-                        {% endfor %}
+                            {% for product in product_list.items %}
+
+                                <tr>
+                                    <td>{{ loop.index0 + 1 }}</td>
+                                    <td>{{ product.title }}</td>
+                                    <td>{{ product.create_date.strftime('%y-%m-%d') }}</td>
+                                    <td>{{ '판매중' if product.status == 'active' else '판매완료' }}</td>
+
+
+                                </tr>
+                            {% endfor %}
                         {% else %}
-                        <tr>
-                            <td colspan="3">등록한 상품이 없습니다.</td>
-                        </tr>
+                            <tr>
+                                <td colspan="4">등록한 상품이 없습니다.</td>
+                            </tr>
                         {% endif %}
                         </tbody>
                     </table>
+                    <ul class="pagination justify-content-center">
+                        <!--        이전버튼-->
+                        {% if product_list.has_prev %}
+                            <li class="page-item"><a class="page-link" data-page="{{ product_list.prev_num }}"
+                                                     href="javascript:void(0)">이전</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">이전</a></li>
+                        {% endif %}
+                        <!--페이지번호  -->
+                        {% for page_num in product_list.iter_pages() %}
+                            {% if page_num %}
+                                <!--일반페이지-->
+                                {% if page_num != product_list.page %}
+                                    <li class="page-item"><a class="page-link" href="javascript:void(0)"
+                                                             data-page="{{ page_num }}">{{ page_num }}</a>
+                                    </li>
+                                    <!--현재페이지-->
+                                {% else %}
+                                    <li class="page-item active"><a class="page-link" aria-current="page"
+                                                                    href="javascript:void(0)">{{ page_num }}</a>
+                                    </li>
+                                {% endif %}
+                            {% else %}
+                                <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">...</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!--다음버튼-->
+                        {% if product_list.has_next %}
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)"
+                                                     data-page="{{ product_list.next_num }}">다음</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">다음</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
         </div>
@@ -97,20 +131,20 @@
             <div class="comment-table-wrap">
                 <table class="comment-table">
                     <thead>
-                        <tr>
-                            <th>번호</th>
-                            <th>댓글 내용</th>
-                            <th>작성일</th>
-                            <th>상태</th>
-                            <th>관리</th>
-                        </tr>
+                    <tr>
+                        <th>번호</th>
+                        <th>댓글 내용</th>
+                        <th>작성일</th>
+                        <th>상태</th>
+                        <th>관리</th>
+                    </tr>
                     </thead>
                     <tbody id="commentBody">
-                        <tr>
-                            <td colspan="5" style="color: #999; text-align: center;padding: 30px">
-                                등록된 댓글이 없습니다.
-                            </td>
-                        </tr>
+                    <tr>
+                        <td colspan="5" style="color: #999; text-align: center;padding: 30px">
+                            등록된 댓글이 없습니다.
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
