@@ -4,20 +4,21 @@
 {# 코드 작성은 이선 이후로 작성 바람#}
 <link rel="stylesheet" href="{{ url_for('static', filename='auth/auth.css') }}">
 
+
 <div class="auth-container">
     <div class="auth-box login-shadow">
         <!-- 로고 영역 -->
         <div class="auth-logo login-border">
 {#           <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/sub/logo.png') }}" alt="짝퉁로고"></a>#}
           <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}" alt="짝퉁로고"></a>
-             <div class="auth-login-text">
-                <span>5!</span>
-                <span>Pick</span>
-                <span>Mall</span>
-            </div>
+{#             <div class="auth-login-text">#}
+{#                <span>5!</span>#}
+{#                <span>Pick</span>#}
+{#                <span>Mall</span>#}
+{#            </div>#}
         </div>
 
-        <h2>로그인</h2>
+{#        <h2>로그인</h2>#}
         <form method="post">
             {{ form.csrf_token }}
             {% include "form_errors.html" %}

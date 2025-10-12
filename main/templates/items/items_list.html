@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block sub %}
+
     <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_common.css') }}">
+
 {% endblock %}
 
 {% block content %}
@@ -41,19 +43,31 @@
                 {% if products %}
                     {% for p in products %}
                         <div class="product-card-wrapper">
-                            <div class="product-card" data-color="{{ p.color or 'default' }}">
-                                <img src="{{ p.img_path or url_for('static', filename='img/default.png') }}"
-                                     alt="{{ p.title }}">
-                                <h3>[{{ p.title }}]</h3>
-                                <div class="disa1">
-                                    <p>{{ p.price }}원</p>
+                            <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                <div class="product-card" data-color="{{ p.color or 'default' }}">
+                                    {% if p.images %}
+                                        <!-- 첫 번째 이미지 -->
+                                        <img src="{{ url_for('static', filename=p.images[0].img_path) }}"
+                                             alt="{{ p.title }}">
+                                    {% else %}
+                                        <!-- 이미지 없으면 기본 이미지 -->
+                                        <img src="{{ url_for('static', filename='product_img/상품기본.gif') }}"
+                                             alt="{{ p.title }}">
+                                    {% endif %}
+                                    <h3>{{ p.title }}</h3>
+                                    <div class="disa1">
+                                        <span>{{ p.discount }}%</span>
+                                        <p>{{ "{:,}".format( p.price) }}원</p>
+                                    </div>
+                                    <p class="discount">{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     {% endfor %}
                 {% else %}
                     <p style="text-align:center; margin-top:50px;">등록된 상품이 없습니다.</p>
                 {% endif %}
+
             </div>
         </div>
     </div>

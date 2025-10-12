@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block mypage %}
+
     <link rel="stylesheet" href="{{ url_for('static', filename='mypage/mypage.css') }}">
-{#    <script src="{{ url_for('static', filename='mypage/mypage.js') }}"></script>#}
+
+    {#    <script src="{{ url_for('static', filename='mypage/mypage.js') }}"></script>#}
 {% endblock %}
 {% block content %}
 
@@ -55,9 +57,10 @@
                         <tr class="post-title">
                             <th scope="col">번호</th>
                             <th scope="col">상품명</th>
+                            <th scope="col">가격</th>
                             <th scope="col">등록일</th>
                             {#<th scope="col">조회</th>#}
-                            <th scope="col">상태</th>
+                            <th scope="col">관리</th>
                         </tr>
                         </thead>
                         <tbody id="productBody">
@@ -67,8 +70,15 @@
                                 <tr>
                                     <td>{{ loop.index0 + 1 }}</td>
                                     <td>{{ product.title }}</td>
+                                    <td>{{ "{:,}".format(product.price) }}원</td>
                                     <td>{{ product.create_date.strftime('%y-%m-%d') }}</td>
-                                    <td>{{ '판매중' if product.status == 'active' else '판매완료' }}</td>
+                                    <td> {% if g.user.admin or product.user_id == g.user.id %}
+                                        <button class="btn btn-sm btn-outline-danger delete"
+                                                data-uri="{{ url_for('items.delete_product', product_id=product.id) }}">
+                                            삭제
+                                        </button>
+                                        {% endif %}
+                                    </td>
 
 
                                 </tr>
@@ -83,39 +93,35 @@
                     <ul class="pagination justify-content-center">
                         <!--        이전버튼-->
                         {% if product_list.has_prev %}
-                            <li class="page-item"><a class="page-link" data-page="{{ product_list.prev_num }}"
-                                                     href="javascript:void(0)">이전</a>
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('member.mypage', page=product_list.prev_num) }}">이전</a>
                             </li>
                         {% else %}
-                            <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">이전</a></li>
+                            <li class="page-item disabled"><a class="page-link">이전</a></li>
                         {% endif %}
-                        <!--페이지번호  -->
+                        <!-- 페이지 번호 -->
                         {% for page_num in product_list.iter_pages() %}
                             {% if page_num %}
-                                <!--일반페이지-->
                                 {% if page_num != product_list.page %}
-                                    <li class="page-item"><a class="page-link" href="javascript:void(0)"
-                                                             data-page="{{ page_num }}">{{ page_num }}</a>
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="{{ url_for('member.mypage', page=page_num) }}">{{ page_num }}</a>
                                     </li>
-                                    <!--현재페이지-->
                                 {% else %}
-                                    <li class="page-item active"><a class="page-link" aria-current="page"
-                                                                    href="javascript:void(0)">{{ page_num }}</a>
-                                    </li>
+                                    <li class="page-item active"><a class="page-link">{{ page_num }}</a></li>
                                 {% endif %}
                             {% else %}
-                                <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">...</a>
-                                </li>
+                                <li class="page-item disabled"><a class="page-link">...</a></li>
                             {% endif %}
                         {% endfor %}
 
-                        <!--다음버튼-->
+                        <!-- 다음 버튼 -->
                         {% if product_list.has_next %}
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)"
-                                                     data-page="{{ product_list.next_num }}">다음</a>
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('member.mypage', page=product_list.next_num) }}">다음</a>
                             </li>
                         {% else %}
-                            <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">다음</a></li>
+                            <li class="page-item disabled"><a class="page-link">다음</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -150,6 +156,16 @@
             </div>
         </div>
     </div>
+<script>
+    const delete_elements = document.querySelectorAll('.delete');
+    delete_elements.forEach(function (element) {
+        element.addEventListener('click', function () {
+            if (confirm('정말로 삭제하시겠습니까?')) {
+                location.href = this.dataset.uri;
+            }
+        })
+    })
 
+</script>
 
 {% endblock %}

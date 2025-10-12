@@ -40,7 +40,7 @@
 }
 
 .auth-box .btn-primary {
-    background-color: #007bff;
+    background-color: #28a745;
     border: none;
 }
 
@@ -75,9 +75,8 @@
 }
 
 .auth-logo img {
-    max-width: 200px;
-    height: auto;
-    margin-right: 15px;
+    width: 70%;
+    margin: 50px;
 }
 
 .auth-login-text {
@@ -100,7 +99,7 @@
     text-align: left;
     flex: 1;
     line-height: 1.1;
-    background: blue;
+    background: green;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* 글자를 투명 처리 */
     background-clip: text;
@@ -126,7 +125,7 @@
 }
 
 .auth-logo.signup-border {
-    border: 5px solid #007bff; /* 파란색 (회원가입 페이지) */
+    border: 5px solid #28a745; /* 파란색 (회원가입 페이지) */
 }
 
 /* 공통 박스 스타일 */
@@ -142,10 +141,10 @@
 
 /* 로그인 전용 그림자 (녹색) */
 .auth-box.login-shadow {
-    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.35); /* 초록색 그림자 */
+    box-shadow: 0 4px 20px rgba(128, 128, 128, 0.35); /* 회색 그림자 */
 }
 
 /* 회원가입 전용 그림자 (파란색) */
 .auth-box.signup-shadow {
-    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.35); /* 파란색 그림자 */
+     box-shadow: 0 4px 20px rgba(128, 128, 128, 0.35); /* 회색 그림자 */
 }

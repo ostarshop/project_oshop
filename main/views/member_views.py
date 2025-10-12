@@ -23,8 +23,16 @@ bp = Blueprint('member', __name__, url_prefix='/member')
 @bp.route('/mypage', methods=['GET', 'POST'])
 def mypage():
     form = UserCreateForm()
-    product_list = Product.query.order_by(Product.create_date)
     page = request.args.get('page', default=1, type=int) # 페이지
+    if g.user.admin:
+        product_list = Product.query.order_by(Product.create_date.desc()) \
+            .paginate(page=page, per_page=7)
+    else:
+        product_list = Product.query \
+            .filter_by(user_id=g.user.id) \
+            .order_by(Product.create_date.desc()) \
+            .paginate(page=page, per_page=7)
+
 
 
     if request.method == 'POST':
@@ -42,9 +50,8 @@ def mypage():
 
             g.user.image = f'user_img/{g.user.id}/{filename}'
             db.session.commit()
-        return redirect(url_for('member.mypage',))
+        return redirect(url_for('member.mypage'))
 
-    product_list = product_list.paginate(page=page, per_page=10)  # 한페이지에 보여야할 게시물
 
 
 

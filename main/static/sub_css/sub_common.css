@@ -56,13 +56,13 @@ border-bottom: 1px solid #4444441c;}
 
 
 
-/*!* footer *!*/
+/*/* footer */
 /*footer {width: 100%; height: 650px; background-color: pink;}*/
 /*.f-benar {width: 1200px; height: 200px; margin: 0 auto; }*/
 /*.f-benar img {width: 1200px; margin-top: 20px;}*/
 
 /*.f-gibon {width: 1200px;height: 375px;margin: 0 auto; display: grid !important; grid-template-columns: 30% 30% 40%; column-gap: 24px; background-color: salmon; box-sizing: border-box; overflow: hidden;}*/
-/*!* float 걸어둔 게 있으면 무력화 *!*/
+/*/* float 걸어둔 게 있으면 무력화 */
 /*.f-gibon > *{float: none !important;}*/
 
 /*.f-left {background-color: aqua; display: flex; align-items: center; justify-content: center;}*/
