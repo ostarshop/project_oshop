@@ -11,14 +11,14 @@
           <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}" alt="짝퉁로고"></a>
 
 
-             <div class="auth-signup-text">
-                <span>5!</span>
-                <span>Pick</span>
-                <span>Mall</span>
-            </div>
+{#             <div class="auth-signup-text">#}
+{#                <span>5!</span>#}
+{#                <span>Pick</span>#}
+{#                <span>Mall</span>#}
+{#            </div>#}
         </div>
 
-        <h2>회원가입</h2>
+{#        <h2>회원가입</h2>#}
         <form method="post">
             {{ form.csrf_token }}
             {% include "form_errors.html" %}

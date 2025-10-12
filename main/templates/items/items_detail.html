@@ -1,8 +1,283 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5PICK</title>
 
-{# 코드 작성은 이선 이후로 작성 바람#}
+    <!-- 파일 연결 -->
+
+    <link rel="stylesheet" href='{{ url_for("static", filename='detail/detail.css') }}'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_common.css') }}">
+
+    <!-- fontawesome icon 연결 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- js연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+</head>
+<body>
+<!------------------------------------------------------>
+<!-- header -->
+<!------------------------------------------------------>
+<header>
+    <div class="head">
+        <div class="logo">
+            <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}"
+                                                       alt="짝퉁로고"></a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+        <ul class="nav">
+            {% if g.user %}
+                <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
+                <li><a href="{{ url_for('member.mypage') }}">마이페이지</a></li>
+            {% else %}
+                <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
+                <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
+            {% endif %}
+            <li><a href="">고객지원</a></li>
+        </ul>
+    </div>
+</header>
+<!------------------------------------------------------>
+<!-- title -->
+<!------------------------------------------------------>
+<div class="title">
+    <div class="title-start">
+        <div class="title-slide">
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    {% for img in product.images %}
+                        <div class="swiper-slide">
+                            <!-- 첫 번째 이미지 -->
+                            <img src="{{ url_for('static', filename=img.img_path) }}"
+                                 alt="{{ product.title }}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <div thumbsSlider="" class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    {% for img in product.images %}
+                        <div class="swiper-slide">
+                            <!-- 첫 번째 이미지 -->
+                            <img src="{{ url_for('static', filename=img.img_path) }}"
+                                 alt="{{ product.title }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="warning">
+                <img src="{{ url_for('static', filename='img/detail/직거래_정보유출_보상_불가.png') }}" alt="개인정보 유출 시 보상 불가">
+            </div>
+        </div>
+        <div class="title-sale">
+            <div class="title-sale-1">
+                <i class="fa-solid fa-gift"></i>
+                <h3>지금 보고있는 상품과 <br>
+                    같이 담으면 할인되는 <span>살수록 할인</span> 상품</h3>
+            </div>
+            <div class="title-sale-2">
+                <button>살수록할인</button>
+                <p>2개부터, <span>300원씩 추가할인</span></p>
+            </div>
+            <div class="title-sale-3">
+                <img src="{{ url_for('static', filename='img/detail/잡화9-1.jpg') }}" alt="살수록할인">
+                <div class="title-sale-4">
+                    <p>냥이네 과수원 양모펠트 가방고리 키링</p>
+                    <div class="title-sale-4-1">
+                        <p><span>30%</span> 2,100원</p>
+                    </div>
+                    <div class="title-sale-4-2">
+                        <p></p>
+                        <p>4.3</p>
+                        <p>(12)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title-end">
+        <h3>{{ product.title }}</h3>
+        <div class="title-end-1">
+            <button>추석빅세일</button>
+            <button>당일배송</button>
+        </div>
+        <div class="title-end-text1">
+            <p>★</p>
+            <p>4.8</p>
+            <p>후기 191개</p>
+        </div>
+        <p class="title-price">{{ "{:,}".format( product.price) if product.price is not none else '0' }}원</p>
+        <div class="title-end-price">
+            <span>{{ product.discount }}%</span>
+            <p>{{ "{:,}".format( (product.price * (1 - product.discount / 100))|round(0)|int) if product.price is not none else '0' }}원</p>
+        </div>
+        <p class="title-end-text2">2,500원 최대적립</p>
+        <div class="title-end-text3">
+            <p>후기 적립</p>
+            <p>2,500원</p>
+        </div>
+        <div class="title-bottom">
+            <div class="title-good">
+                <p>♡</p>
+                <p>8.2천</p>
+            </div>
+            <div class="title-pocket">장바구니</div>
+            <div class="title-buynow">바로 구매</div>
+        </div>
+        <div class="delivery">
+            <div class="delivery-group">
+                <button>예약배송</button>
+                <p>10.24 (금) 도착 예정</p>
+            </div>
+            <p>10.22 (수) 출고 • 우체국택배</p>
+            <p>재고에 따라 무배당발 또는 일반배송으로 발송되며, <br>
+                주문 시 배송 방식을 확인할 수 있습니다.</p>
+        </div>
+        <div class="membership">
+            <img src="{{ url_for('static', filename='img/detail/membership.png') }}" alt="멤버십 혜택">
+        </div>
+        <div class="other">
+            <h2> 놓치면 아쉬운 <br> 이번 주 인기 작가님!</h2>
+            <div class="other-all">
+                <div class="other_autor active1">
+                    <div class="plus">
+                        <p>최근 440건 더 많이 구매되었어요!</p>
+                    </div>
+                    <img src="{{ url_for('static', filename='img/detail/작가1.png') }}" alt="작가1">
+                    <div class="other-text">
+                        <h3>자연을 연구하는 명인코스메틱</h3>
+                        <div class="other-subtext">
+                            <p>★</p>
+                            <p>4.9</p>
+                            <p>(1,732)</p>
+                        </div>
+                        <div class="coupon-button">쿠폰</div>
+                    </div>
+                </div>
+                <div class="other_autor">
+                    <div class="plus plus1">
+                        <p>최근 267건 더 많이 구매되었어요!</p>
+                    </div>
+                    <img src="{{ url_for('static', filename='img/detail/작가2.png') }}" alt="작가2">
+                    <div class="other-text">
+                        <h3>덫밥 - The taste trap</h3>
+                        <div class="other-subtext">
+                            <p>★</p>
+                            <p>4.7</p>
+                            <p>(8,374)</p>
+                        </div>
+                        <div class="coupon-button">쿠폰</div>
+                    </div>
+                </div>
+                <div class="other_autor">
+                    <div class="plus plus2">
+                        <p>최근 874건 더 많이 구매되었어요!</p>
+                    </div>
+                    <img src="{{ url_for('static', filename='img/detail/작가3.png') }}" alt="작가3">
+                    <div class="other-text">
+                        <h3>힙서리 - Hipseori</h3>
+                        <div class="other-subtext">
+                            <p>★</p>
+                            <p>4.9</p>
+                            <p>(910)</p>
+                        </div>
+                        <div class="coupon-button">쿠폰</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+<!------------------------------------------------------>
+<!-- Review -->
+<!------------------------------------------------------>
+<div class="Review">
+    <div class="Review-all">
+        <img src="{{ url_for('static', filename='img/detail/리뷰이벤트.png') }}" alt="">
+    </div>
+</div>
 
-{% endblock %}
+
+<div class="footer">
+    <div class="footer-all">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='img/main/찐찐찐막로고.png') }}" alt="">
+        </div>
+        <div class="footer-text">
+            <div>
+                <ul class="footer-text1">
+                    <li>고객 안내</li>
+                    <li>이용 안내</li>
+                    <li>안전 정책</li>
+                    <li>회사 소개</li>
+                    <li>공지사항</li>
+                    <li>자주 묻는 질문</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="footer-text1">
+                    <li>오핑몰 소개</li>
+                    <li>회사 소개</li>
+                    <li>채용 안내</li>
+                    <li>팀 블로그</li>
+                    <li>개인정보 처리방침</li>
+                    <li>고객센터</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="footer-text1">
+                    <li>About Store</li>
+                    <li>회사명(주) : 오핑몰</li>
+                    <li>주소 : 경기도 수원시 팔달구 권광로 146 벽산그랜드코아 4층 404호</li>
+                    <li>대표 : 김카피</li>
+                    <li>사업자등록번호 : 012-34-56789</li>
+                    <li>통신판매업 신고번호 : 012-345-6789</li>
+                    <li>대표번호 : 010-1234-5678</li>
+                    <li>메일주소 : 5pickshop@naver.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-sub">
+        <div class="footer-sub-all">
+            <div class="footer-icon">
+                <a href="https://www.naver.com/"><img src="{{ url_for('static', filename='img/main/sub/naver.png') }}"
+                                                      alt="naver_logo"></a>
+                <a href="https://www.youtube.com/"><img
+                        src="{{ url_for('static', filename='img/main/sub/youtube.png') }}" alt="youtube_logo"></a>
+                <a href="https://www.instagram.com/"><img
+                        src="{{ url_for('static', filename='img/main/sub/instar.png') }}" alt="instagram_logo"></a>
+                <a href="https://www.facebook.com/"><img
+                        src="{{ url_for('static', filename='img/main/sub/f-book.png') }}" alt="facebook_logo"></a>
+                <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=ko"><img
+                        src="{{ url_for('static', filename='img/main/sub/kotalk.png') }}" alt="kakao_logo"></a>
+            </div>
+            <p>Copyright © All Right Reserved</p>
+            <div class="footer-card">
+                <img src="{{ url_for('static', filename='img/main/card1.svg') }}" alt="카드1">
+                <img src="{{ url_for('static', filename='img/main/card2.svg') }}" alt="카드2">
+                <img src="{{ url_for('static', filename='img/main/card3.svg') }}" alt="카드3">
+                <img src="{{ url_for('static', filename='img/main/card4.svg') }}" alt="카드4">
+                <img src="{{ url_for('static', filename='img/main/card5.svg') }}" alt="카드5">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{{ url_for('static', filename='detail/detail_slide.js') }}"></script>
+
+
+</body>
+</html>

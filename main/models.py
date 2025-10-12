@@ -1,4 +1,6 @@
 # DB 구성하는 곳
+from email.policy import default
+
 from main import db
 
 #####################################################################################
@@ -44,14 +46,20 @@ class Product(db.Model):
     content = db.Column(db.Text(), nullable=False) # 글 내용 / 필수입력
     create_date = db.Column(db.DateTime, nullable=False) # 작성일, 시각 / 자동생성
     modify_date = db.Column(db.DateTime, nullable=True) # 글 수정시 수정시각 알려줌
-    price = db.Column(db.String(15), nullable=False) # 가격 / 필수입력
-    img_path = db.Column(db.String(200), nullable=True)  # 이미지 삽입시 사진이 아니라 이미지 저장 경로 추적 / 필수입력 아님
-    color = db.Column(db.String(50), nullable=True)
+    price = db.Column(db.Integer, nullable=False) # 가격 / 필수입력
+    discount = db.Column(db.Integer, nullable=True) # 할인율저장 / 필수아님
 
     # 작성자를 참조
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False) # 사용자 삭제시 작성글 삭제
     user = db.relationship('User', backref=db.backref('Product_set')) # Product 에서 user(작성자)를 참조
 
+    # 이미지 여러장을 올리기 위해서 생성한 db 참조
+    images = db.relationship('ProductImage', backref='product', cascade="all, delete-orphan")
+
+class ProductImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True , autoincrement=True)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
+    img_path = db.Column(db.String(200), nullable=True, default='product_img/상품기본.gif') # 이미지 삽입시 사진이 아니라 이미지 저장 경로 추적 / 필수입력 아님
 
 # 댓글모델 생성
 class Comment(db.Model):
@@ -60,7 +68,9 @@ class Comment(db.Model):
     content = db.Column(db.Text(), nullable=False) # 코멘트 내용 / 필수입력
     create_date = db.Column(db.DateTime, nullable=False) # 작성시각 / 자동생성
     modify_date = db.Column(db.DateTime, nullable=True) # 수정시 수정한 시간 생성
+
     product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete='CASCADE'))  # 상품 글이 삭제되면 코멘트 자동 삭제
     product = db.relationship(Product, backref=db.backref('comment_set')) # 판매글 작석자 참조를 통해서 판매글 접근
+
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False) # 코멘트 작성자 계정 삭제시 코멘트 자동 삭제
     user = db.relationship('User', backref=db.backref('comment_set')) # 댓글 작성자 참조
