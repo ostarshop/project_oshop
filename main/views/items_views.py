@@ -11,7 +11,13 @@ bp = Blueprint('items', __name__, url_prefix='/items')
 
 @bp.route('/main/')
 def _main():
-    return render_template('items/items_main.html')
+    event = Product.query.filter_by(tags='이벤트').all()
+    clothing = Product.query.filter_by(tags='의류').all()
+    accessory = Product.query.filter_by(tags='악세서리').all()
+    misc = Product.query.filter_by(tags='잡화').all()
+
+
+    return render_template('items/items_main.html',event=event, clothing=clothing, misc=misc, accessory=accessory)
 
 
 @bp.route('/list/')
@@ -28,6 +34,7 @@ def create():
         title = request.form['title']
         price = int(request.form.get('price') or 0)
         discount = request.form.get('discount')
+        tags = request.form.get('tags')
         content = request.form.get('description', '내용없음')
         user_id = g.user.id
 
@@ -38,6 +45,7 @@ def create():
             price=price,
             discount=discount,
             create_date=datetime.now(),
+            tags = tags,
             user_id=user_id
         )
         db.session.add(product)

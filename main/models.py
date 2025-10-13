@@ -48,6 +48,8 @@ class Product(db.Model):
     modify_date = db.Column(db.DateTime, nullable=True) # 글 수정시 수정시각 알려줌
     price = db.Column(db.Integer, nullable=False) # 가격 / 필수입력
     discount = db.Column(db.Integer, nullable=True) # 할인율저장 / 필수아님
+    tags = db.Column(db.String(50), nullable=False, default='')
+
 
     # 작성자를 참조
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False) # 사용자 삭제시 작성글 삭제

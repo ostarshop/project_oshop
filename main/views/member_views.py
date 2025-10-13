@@ -52,9 +52,6 @@ def mypage():
             db.session.commit()
         return redirect(url_for('member.mypage'))
 
-
-
-
     return render_template('member/mypage.html', user=g.user, form=form, page=page, product_list=product_list)
 
 @bp.route('/create', methods=['GET'])
