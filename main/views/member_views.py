@@ -28,8 +28,11 @@ def mypage():
         image = 'user_img/default.jpg'
         if formimage:
             upload_folder = os.path.join(current_app.root_path, 'static/user_img', str(g.user.id))
-
             os.makedirs(upload_folder, exist_ok=True)
+            if g.user.image and g.user.image != 'user_img/default.jpg':
+                existing_image_path = os.path.join(current_app.root_path, 'static', g.user.image)
+                if os.path.exists(existing_image_path):
+                    os.remove(existing_image_path)
 
             filename = secure_filename(formimage.filename)
             file_path = os.path.join(upload_folder, filename)
