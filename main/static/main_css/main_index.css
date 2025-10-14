@@ -1,6 +1,14 @@
 @charset "utf-8";
 
 
+a.no-style-link {
+    all: unset; /* 대부분의 스타일 초기화 */
+    cursor: pointer; /* 클릭 가능한 것처럼 보이게 */
+    display: block;  /* div를 감쌀 수 있도록 block-level 설정 */
+    width: 100%;     /* 감싸는 div 크기 맞추기 */
+    height: 100%;
+}
+
 /* --------------------------------------------------------------- */
 /* nav */
 /* --------------------------------------------------------------- */
@@ -42,7 +50,6 @@
 .QNA-group1 p:nth-of-type(1) {font-size: 19px; font-weight: 450;}
 .QNA-group1 p:nth-of-type(2) {font-size: 14px; padding-top: 4.5px; padding-left: 10px; color: #444444c5;}
 
-/* .QNA-logo {width: 250px; height: 550px; display: flex; justify-content: center; align-items: end; margin-bottom: 80px;}
-.QNA-logo img {width: 250px; height: 90px; opacity: 0.5;} */
+
 
 .QNA_last {padding-top: 18px; font-weight: 700; font-size: 25px; color: #44444488;}

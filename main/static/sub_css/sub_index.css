@@ -42,8 +42,9 @@
 
 
 /* 몸뚱아리 첫째줄 */
-.product-container {display: flex; flex-wrap: wrap; justify-content: space-between;}
+.product-container {display: flex; flex-wrap: wrap; gap: 30px}
 .product-card-wrapper {width: calc(33.33% - 20px); box-sizing: border-box;}
+.product-card {gap: 300px;}
 .a1 {width: 300px; height: 450px;margin-left: 25px;}
 .product-card img {width: 250px; height: 300px;margin-left: 25px;}
 /* 가격표1-1 */
@@ -53,23 +54,6 @@
 .disa1 p{color: rgb(127, 127, 127);margin: 0 10px;}
 .discount{width: 300px; text-align: center;}
 
-.a2 {width: 300px;height: 450px;}
-.a2 img {width: 250px; height: 350px;margin-left: 25px;}
-/* 가격표1-2 */
-.a2 h3 {font-size: 20px; text-align: center;}
-.disa2 {display: flex;justify-content: center;}
-.disa2 span {color: red;}
-.disa2 p{color: rgb(127, 127, 127); text-decoration: line-through;margin: 0 10px;}
-.a2 p {text-align: center;}
-
-.a3 {width: 300px;height: 450px;}
-.a3 img {width: 250px; height: 350px;margin-left: 25px;}
-/* 가격표1-3 */
-.a3 h3 {font-size: 20px; text-align: center;}
-.disa3 {display: flex;justify-content: center;}
-.disa3 span {color: red;}
-.disa3 p{color: rgb(127, 127, 127); text-decoration: line-through;margin: 0 10px;}
-.a3 p {text-align: center;}
 
 /* 몸통1-2 */
 .cont2 {width: 1200px;height: 450px;margin: 0 auto; display: flex; }
@@ -102,6 +86,7 @@
 
 .review-extra ul {list-style: none;padding: 0;margin: 0;}
 .review-extra ul li {margin: 8px 0;font-size: 14px;}
-
-.photo-reviews {display: grid; grid-template-columns: 1fr 1fr;gap: 10px;}
-.photo-reviews img {border-radius: 5px;object-fit: cover;}
+/* 포토 리뷰*/
+.photo-review-all {border-top: 1px solid #ddd;  padding-top:25px;}
+.photo-reviews {display: grid; grid-template-columns: 1fr 1fr; gap: 10px;}
+.photo-reviews img {width: 300px; border-radius: 5px;object-fit: cover;}

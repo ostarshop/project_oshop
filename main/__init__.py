@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 
 import config
+
 nameing_convention = {
     'ix': 'ix_%(column_0_label)s',
     'uq': 'uq_%(table_name)s_%(column_0_name)s',
@@ -14,6 +15,7 @@ nameing_convention = {
 
 db = SQLAlchemy(metadata=MetaData(naming_convention=nameing_convention))
 migrate = Migrate()
+
 
 def create_app():
     app = Flask(__name__)
@@ -28,12 +30,10 @@ def create_app():
     from . import models
 
     # 블루프린트 등록
-    from.views import main_views, items_views, review_views, auth_views, member_views
+    from .views import main_views, items_views, auth_views, member_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(items_views.bp)
-    # app.register_blueprint(review_views.bp)
     app.register_blueprint(auth_views.bp)
     app.register_blueprint(member_views.bp)
-
 
     return app

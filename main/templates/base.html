@@ -14,54 +14,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='sub_css/sub_common.css') }}">
 
-{% block sub %}
-{% endblock %}
+    {% block sub %}
+    {% endblock %}
 
-{% block create %}
-{% endblock %}
+    {% block create %}
+    {% endblock %}
 
-{% block mypage %}
-{% endblock %}
+    {% block mypage %}
+    {% endblock %}
 
-{% block detail %}
-{% endblock %}
-
-
+    {% block detail %}
+    {% endblock %}
 
 
 </head>
 <body>
-        <!-- 위로 올라가기 버튼 (지피티 참고) -->
-        <div></div>
+<!-- 위로 올라가기 버튼 (지피티 참고) -->
+<div></div>
 
 
-
-        <!-- Header -->
-    <header>
-        <div class="head">
-            <div class="logo">
-                <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}" alt="짝퉁로고"></a>
-            </div>
-            <div class="search">
-                <input type="text" placeholder="검색어를 입력하세요">
-                <button>검색</button>
-            </div>
-            <ul class="nav">
-                {% if g.user %}
+<!-- Header -->
+<header>
+    <div class="head">
+        <div class="logo">
+            <a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='img/main/찐막로고.png') }}"
+                                                       alt="짝퉁로고"></a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+        <ul class="nav">
+            {% if g.user %}
                 <li><a href="{{ url_for('auth.logout') }}">로그아웃</a></li>
                 <li><a href="{{ url_for('member.mypage') }}">마이페이지</a></li>
-                {% else %}
+            {% else %}
                 <li><a href="{{ url_for('auth.login') }}">로그인</a></li>
                 <li><a href="{{ url_for('auth.signup') }}">회원가입</a></li>
-                {% endif %}
-                <li><a href="">고객지원</a></li>
-            </ul>
-        </div>
-    </header>
+            {% endif %}
+            <li><a href="">고객지원</a></li>
+        </ul>
+    </div>
+</header>
 
 
 <!--    기본 템플릿 안에 삽입될 내용 start-->
@@ -70,68 +68,73 @@
 <!--기본 템플릿 안에 삽입될 내용 end-->
 
 
- <div class="footer">
-            <div class="footer-all">
-                <div class="footer-logo">
-                    <img src="{{ url_for('static', filename='img/main/찐찐찐막로고.png') }}" alt="">
-                </div>
-                <div class="footer-text">
-                    <div>
-                        <ul class="footer-text1">
-                            <li>고객 안내</li>
-                            <li>이용 안내</li>
-                            <li>안전 정책</li>
-                            <li>회사 소개</li>
-                            <li>공지사항</li>
-                            <li>자주 묻는 질문</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="footer-text1">
-                            <li>오핑몰 소개</li>
-                            <li>회사 소개</li>
-                            <li>채용 안내</li>
-                            <li>팀 블로그</li>
-                            <li>개인정보 처리방침</li>
-                            <li>고객센터</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="footer-text1">
-                            <li>About Store</li>
-                            <li>회사명(주) : 오핑몰</li>
-                            <li>주소 : 경기도 수원시 팔달구 권광로 146 벽산그랜드코아 4층 404호</li>
-                            <li>대표 : 김카피</li>
-                            <li>사업자등록번호 : 012-34-56789</li>
-                            <li>통신판매업 신고번호 : 012-345-6789</li>
-                            <li>대표번호 : 010-1234-5678</li>
-                            <li>메일주소 : 5pickshop@naver.com</li>
-                        </ul>
-                    </div>
-                </div>
+<div class="footer">
+    <div class="footer-all">
+        <div class="footer-logo">
+            <img src="{{ url_for('static', filename='img/main/찐찐찐막로고.png') }}" alt="">
+        </div>
+        <div class="footer-text">
+            <div>
+                <ul class="footer-text1">
+                    <li>고객 안내</li>
+                    <li>이용 안내</li>
+                    <li>안전 정책</li>
+                    <li>회사 소개</li>
+                    <li>공지사항</li>
+                    <li>자주 묻는 질문</li>
+                </ul>
             </div>
-            <div class="footer-sub">
-                <div class="footer-sub-all">
-                    <div class="footer-icon">
-                        <a href="https://www.naver.com/"><img src="{{ url_for('static', filename='img/main/sub/naver.png') }}" alt="naver_logo"></a>
-                        <a href="https://www.youtube.com/"><img src="{{ url_for('static', filename='img/main/sub/youtube.png') }}" alt="youtube_logo"></a>
-                        <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='img/main/sub/instar.png') }}" alt="instagram_logo"></a>
-                        <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='img/main/sub/f-book.png') }}" alt="facebook_logo"></a>
-                        <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=ko"><img src="{{ url_for('static', filename='img/main/sub/kotalk.png') }}" alt="kakao_logo"></a>
-                    </div>
-                    <p>Copyright © All Right Reserved</p>
-                    <div class="footer-card">
-                        <img src="{{ url_for('static', filename='img/main/card1.svg') }}" alt="카드1">
-                        <img src="{{ url_for('static', filename='img/main/card2.svg') }}" alt="카드2">
-                        <img src="{{ url_for('static', filename='img/main/card3.svg') }}" alt="카드3">
-                        <img src="{{ url_for('static', filename='img/main/card4.svg') }}" alt="카드4">
-                        <img src="{{ url_for('static', filename='img/main/card5.svg') }}" alt="카드5">
-                    </div>
-                </div>
+            <div>
+                <ul class="footer-text1">
+                    <li>오핑몰 소개</li>
+                    <li>회사 소개</li>
+                    <li>채용 안내</li>
+                    <li>팀 블로그</li>
+                    <li>개인정보 처리방침</li>
+                    <li>고객센터</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="footer-text1">
+                    <li>About Store</li>
+                    <li>회사명(주) : 오핑몰</li>
+                    <li>주소 : 경기도 수원시 팔달구 권광로 146 벽산그랜드코아 4층 404호</li>
+                    <li>대표 : 김카피</li>
+                    <li>사업자등록번호 : 012-34-56789</li>
+                    <li>통신판매업 신고번호 : 012-345-6789</li>
+                    <li>대표번호 : 010-1234-5678</li>
+                    <li>메일주소 : 5pickshop@naver.com</li>
+                </ul>
             </div>
         </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    </div>
+    <div class="footer-sub">
+        <div class="footer-sub-all">
+            <div class="footer-icon">
+                <a href="https://www.naver.com/"><img src="{{ url_for('static', filename='img/main/sub/naver.png') }}"
+                                                      alt="naver_logo"></a>
+                <a href="https://www.youtube.com/"><img
+                        src="{{ url_for('static', filename='img/main/sub/youtube.png') }}" alt="youtube_logo"></a>
+                <a href="https://www.instagram.com/"><img
+                        src="{{ url_for('static', filename='img/main/sub/instar.png') }}" alt="instagram_logo"></a>
+                <a href="https://www.facebook.com/"><img
+                        src="{{ url_for('static', filename='img/main/sub/f-book.png') }}" alt="facebook_logo"></a>
+                <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=ko"><img
+                        src="{{ url_for('static', filename='img/main/sub/kotalk.png') }}" alt="kakao_logo"></a>
+            </div>
+            <p>Copyright © All Right Reserved</p>
+            <div class="footer-card">
+                <img src="{{ url_for('static', filename='img/main/card1.svg') }}" alt="카드1">
+                <img src="{{ url_for('static', filename='img/main/card2.svg') }}" alt="카드2">
+                <img src="{{ url_for('static', filename='img/main/card3.svg') }}" alt="카드3">
+                <img src="{{ url_for('static', filename='img/main/card4.svg') }}" alt="카드4">
+                <img src="{{ url_for('static', filename='img/main/card5.svg') }}" alt="카드5">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
 </body>

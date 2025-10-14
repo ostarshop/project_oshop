@@ -1,61 +1,71 @@
 {% extends 'base.html' %}
 {% block create %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='create/new.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='create/new.css') }}">
 {% endblock %}
 {% block content %}
 
 
-{# 코드 작성은 이선 이후로 작성 바람#}
-{# form 모든 입력을 하나로 묶어서 flask로 보낼 통로 #}
-<form method="post" action="{{ url_for('items.create') }}" enctype="multipart/form-data">
-   <div id="slider1">
-        <div class="new">
-            <div class="new-button">상품등록</div>
-        </div>
-    </div>
-    <!-- 몸통2 -->
-    <div id="slider2">
-        <div class="title">
-            <div class="title-box">
-                <input type="text" name="title" placeholder="제목을 입력하세요.">
+    {# 코드 작성은 이선 이후로 작성 바람#}
+    {# form 모든 입력을 하나로 묶어서 flask로 보낼 통로 #}
+    <form method="post" action="{{ url_for('items.create') }}" enctype="multipart/form-data">
+        <div id="slider1">
+            <div class="new">
+                <div class="new-button">상품등록</div>
             </div>
         </div>
-    </div>
-    <!-- 몸통3 -->
-    <div id="slider3">
-        <div class="setting">
-            <div class="title-setting">
-                <input type="text" name="discount" placeholder="할인율을 입력하세요.">
-                <input type="text" name="price" placeholder="가격을 입력하세요.">
+        <!-- 몸통2 -->
+        <div id="slider2">
+            <div class="title">
+                <div class="title-box">
+                    <input type="text" name="title" placeholder="제목을 입력하세요.">
+                </div>
             </div>
         </div>
-    </div>
+        <!-- 몸통3 -->
+        <div id="slider3">
+            <div class="setting">
+                <div class="title-setting">
+                    <input type="text" name="discount" placeholder="할인율을 입력하세요. (숫자만 입력하세요.)">
+                    <input type="text" name="price" placeholder="가격을 입력하세요. (숫자만 입력하세요.)">
+                </div>
+            </div>
+        </div>
 
-    <!-- 몸통4 -->
-    <div id="slider4">
-        <div class="text">
-            <div class="text_1">
-                <textarea name="description" rows="27" cols="170" placeholder="내용을 입력하세요."></textarea>
+        <!-- 몸통4 -->
+        <        <!-- 몸통4 -->
+
+        <div id="slider4">
+            <div class="category-box">
+                <div class="category-text">
+                    <h2>상품 카테고리 선택</h2>
+                    <select id="categorySelect" name="tags">
+                        <option value="">-- 카테고리를 선택하세요 --</option>
+                        <option value="의류">👕 의류</option>
+                        <option value="악세서리">💍 악세서리</option>
+                        <option value="잡화">🧺 잡화</option>
+                        <option value="이벤트">🎁 이벤트</option>
+                    </select>
+                </div>
+                <div id="result"></div>
             </div>
         </div>
-    </div>
-    <!-- 몸통5 -->
-    <div id="slider5">
-        <div class="new_image">
-            <div class="nimg-up">
-                <label for="imageUpload">이미지 업로드</label>
-                <input type="file" name="images" multiple>
+        <!-- 몸통5 -->
+        <div id="slider5">
+            <div class="new_image">
+                <div class="nimg-up">
+                    <label for="imageUpload">이미지 업로드</label>
+                    <input type="file" name="images" multiple>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- 몸통6 -->
-    <div id="slider6">
-        <div class="save">
-            <div class="save_pu">
-                <input type="submit" value="저장하기" class="save_s">
+        <!-- 몸통6 -->
+        <div id="slider6">
+            <div class="save">
+                <div class="save_pu">
+                    <input type="submit" value="저장하기" class="save_s">
+                </div>
             </div>
         </div>
-    </div>
-</form>
-  {% endblock %}
+    </form>
+{% endblock %}

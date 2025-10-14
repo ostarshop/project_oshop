@@ -2,7 +2,7 @@
 
 /* 전체 페이지 폭은 header/footer와 동일하게 */
 .auth-container {
-    max-width: 1200px;   /* header/footer 기준 폭 */
+    max-width: 1200px; /* header/footer 기준 폭 */
     margin: 60px auto;
     padding: 20px;
 }
@@ -14,7 +14,7 @@
     padding: 40px 30px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .auth-box h2 {
@@ -80,7 +80,7 @@
 }
 
 .auth-login-text {
-            display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: left;
@@ -93,7 +93,7 @@
 }
 
 .auth-signup-text {
-            display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: left;
@@ -135,7 +135,7 @@
     padding: 40px 30px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 기본 그림자 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 기본 그림자 */
     transition: box-shadow 0.3s ease;
 }
 
@@ -146,5 +146,5 @@
 
 /* 회원가입 전용 그림자 (파란색) */
 .auth-box.signup-shadow {
-     box-shadow: 0 4px 20px rgba(128, 128, 128, 0.35); /* 회색 그림자 */
+    box-shadow: 0 4px 20px rgba(128, 128, 128, 0.35); /* 회색 그림자 */
 }
