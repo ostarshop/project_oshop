@@ -1,4 +1,4 @@
-![오픽몰](/img/게시판_프로필사진1.jpg)
+![오픽몰](./img/opickmall(main).png)
 
 ## 💫 Flask Team Project
 플라스크를 이용한 쇼핑몰 사이트 만들기
@@ -42,13 +42,138 @@
 03. [🔎 주요기능]
 04. [📂 프로젝트 보고서]
 05. [✌ 추후 추가하고싶은 기능]
+06. [📚 배운점]
+07. [🧩 문제 해결 사례]
+08. [🚀 느낀 점]
+09. [⚙️ 참고]
 
 <br>
 
 ## 📐 Diagram
 <details><summary>UseCase</summary>
-
 <br/>
 
-![오픽몰](/img/게시판_프로필사진2.jpg)
+![usecase](./img/usecase.png)
+
 </details>
+
+<details><summary>클래스 다이어그램</summary>
+<br>
+
+![클래스다이어그램](./img/ClassDiagram.png)
+
+</details>
+
+<br>
+
+## 🖥 화면구현
+<details><summary>메인페이지</summary>
+<br>
+
+![메인페이지](./img/mainpage.png)
+
+</details>
+
+<details><summary>서브페이지</summary>
+<br>
+
+![서브페이지](./img/subpage.png)
+
+</details>
+
+<details><summary>상품 상세 페이지</summary>
+<br>
+
+![상품상세페이지](./img/product_detail.png)
+
+</details>
+
+<details><summary>로그인 페이지</summary>
+<br>
+
+![로그인페이지](./img/login.png)
+
+</details>
+
+<details><summary>회원가입 페이지</summary>
+<br>
+
+![회원가입페이지](./img/signup.png)
+
+</details>
+
+<details><summary>마이페이지</summary>
+<br>
+
+![마이페이지](./img/mypage.png)
+
+</details>
+
+<details><summary>상품 등록 페이지</summary>
+<br>
+
+![상품등록페이지](./img/productpage.png)
+
+</details>
+
+<details><summary>상품 등록 상세</summary>
+<br>
+
+![상품등록상세](./img/product_all.png)
+
+</details>
+
+## 🔎 주요기능
+#### 1. 사용자 인증
+- 로그인, 회원가입: 사용자 계정 생성 및 로그인 기능.
+
+#### 2. 데이터베이스 연동
+- <br>
+- 
+
+#### 3. 웹 페이지 및 템플릿 렌더링
+- HTML/CSS/JavaScript: 프론트엔드 구현.<br>
+- Flask: 백엔드 구현.<br>
+
+<br>
+
+## 📂 프로젝트 보고서
+[Opickmall project 결과보고.pptx](./img/project_oshop_문서작성.pptx)
+
+<br>
+
+## ✌ 추후 추가하고싶은 기능
+- 장바구니
+- 별점
+- 댓글/게시판
+- 결제 페이지
+- 주문/주문내역 확인/찜하기
+- 상품 검색
+- 리뷰페이지
+
+<br>
+
+## 📚 배운점
+
+<br>
+
+## 🧩 문제 해결 사례
+<details>
+<summary><b> 1) 집에 가고싶다 </b></summary>
+<br>
+
+**직면한 문제**
+- 말로 표현할 수 없을 정도에 빠그라짐 발생.
+
+**해결 과정**
+- 집에 매우 가고싶어하는 그들
+- 위가 쓰리다
+- 우웩
+
+**결과 및 학습점**
+- 건들면 물어요
+- 거지같딩
+
+</details>
+
+
