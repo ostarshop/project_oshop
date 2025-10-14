@@ -7,13 +7,14 @@ a {text-decoration: none; color: #333;}
 
 
 /* --------------------------------------------------------------- */
-/* 위로 올라가기 버튼 (지피티 참고) */
+/* 맨 위로 올라가기 버튼 - CSS */
 /* --------------------------------------------------------------- */
 .back-to-top {width: 50px; height: 50px; background: #49af05;  display: none; position: fixed; border-radius: 50%; bottom: 30px;
 right: 30px; color: #fff; padding: 12px 17px; cursor: pointer; z-index: 1000; font-weight: bolder;}
 /* display:none 처음에 안 보이게, position:fixed 위치 고정 */
 
 .back-to-top.visible {display: block; opacity: 1;}
+
 
 
 /* --------------------------------------------------------------- */

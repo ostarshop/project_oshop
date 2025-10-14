@@ -6,6 +6,16 @@ a {text-decoration: none; color: #333;}
 body {font-family: 'Pretendard';}
 
 
+/* --------------------------------------------------------------- */
+/* 맨 위로 올라가기 버튼 - CSS */
+/* --------------------------------------------------------------- */
+.back-to-top {width: 50px; height: 50px; background: #49af05;  display: none; position: fixed; border-radius: 50%; bottom: 30px;
+right: 30px; color: #fff; padding: 12px 17px; cursor: pointer; z-index: 1000; font-weight: bolder;}
+/* display:none 처음에 안 보이게, position:fixed 위치 고정 */
+
+.back-to-top.visible {display: block; opacity: 1;}
+
+
 /* header */
 header {width: 100%; height: 75px;}
 .head {width: 1200px; height: 75px;margin: 0 auto; display: flex; justify-content: space-between; align-items: center;}
