@@ -106,7 +106,6 @@
     <div class="title-end">
         <h3>{{ product.title }}</h3>
         <div class="title-end-1">
-            <button>추석빅세일</button>
             <button>당일배송</button>
         </div>
         <div class="title-end-text1">
@@ -135,9 +134,9 @@
         <div class="delivery">
             <div class="delivery-group">
                 <button>예약배송</button>
-                <p>10.24 (금) 도착 예정</p>
+                <p>{{ arrival }} 도착 예정</p>
             </div>
-            <p>10.22 (수) 출고 • 우체국택배</p>
+            <p>{{ today }} 출고 • 우체국택배</p>
             <p>재고에 따라 무배당발 또는 일반배송으로 발송되며, <br>
                 주문 시 배송 방식을 확인할 수 있습니다.</p>
         </div>

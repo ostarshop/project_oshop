@@ -7,10 +7,10 @@
 
 
     <!-- swiper slide 연결 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css"/>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -110,21 +110,21 @@
                         <div class="swiper-wrapper">
                             {% if event %}
                                 {% for p in event %}
-                                    <a href="{{ url_for('items.detail', product_id=p.id) }}">
-                                        <div class="swiper-slide">
+                                    <div class="swiper-slide">
+                                        <a href="{{ url_for('items.detail', product_id=p.id) }}">
                                             <div class="slide2-production">
                                                 <img src="{{ url_for('static', filename=p.images[0].img_path) }}"
                                                      alt="{{ p.title }}">
                                                 <h4>{{ p.title }}</h4>
-                                                <p>추석 이벤트 한정 수량이므로 조기품절...</p>
+                                                <p>이벤트 한정 수량이므로 조기품절...</p>
                                                 <div class="slide2-text"><p>{{ p.discount }}%</p>
                                                     <p><i class="fa-solid fa-truck"></i> 2,000원</p></div>
                                                 <div class="slide2-text2">
                                                     <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
                                                     <p>{{ "{:,}".format( p.price) }}원</p></div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 {% endfor %}
                             {% endif %}
 
@@ -175,21 +175,26 @@
                                     <div class="swiper-wrapper">
                                         {% for image in p.images %}
                                             <div class="swiper-slide">
-                                                <img class="clothes-img-box"
-                                                     src="{{ url_for('static', filename=image.img_path) }}"
-                                                     alt="{{ p.title }}">
+                                                <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                                    <img class="clothes-img-box"
+                                                         src="{{ url_for('static', filename=image.img_path) }}"
+                                                         alt="{{ p.title }}">
+                                                </a>
                                             </div>
                                         {% endfor %}
                                     </div>
                                 </div>
                                 <div class="clothes-text">
-                                    <h3>{{ p.title }}</h3>
-                                    <div class="clothes-text-1">
-                                        <p>{{ p.discount }}</p>
-                                        <p>{{ "{:,}".format( p.price) }}원</p>
-                                    </div>
-                                    <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
+                                    <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                        <h3>{{ p.title }}</h3>
+                                        <div class="clothes-text-1">
+                                            <p>{{ p.discount }}</p>
+                                            <p>{{ "{:,}".format( p.price) }}원</p>
+                                        </div>
+                                        <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
+                                    </a>
                                 </div>
+
                             </div>
                         {% endfor %}
                     {% endif %}
@@ -208,16 +213,16 @@
             <div class="swiper mySwiper4">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_추석쿠폰.webp') }} alt="추석쿠폰"/>
+                        <img src="{{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_추석쿠폰.webp') }}" alt="추석쿠폰"/>
                     </div>
                     <div class="swiper-slide">
-                        <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_친구랑함께.webp') }} alt="친구랑함께"/>
+                        <img src="{{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_친구랑함께.webp') }}" alt="친구랑함께"/>
                     </div>
                     <div class="swiper-slide">
-                        <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_폰케이스쿠폰.webp') }} alt="폰케이스쿠폰"/>
+                        <img src="{{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_폰케이스쿠폰.webp') }}" alt="폰케이스쿠폰"/>
                     </div>
                     <div class="swiper-slide">
-                        <img src={{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_메가세일쿠폰.webp') }} alt="메가세일쿠폰"/>
+                        <img src="{{ url_for('static', filename='/img/main/이벤트,쿠폰팩_슬라이드_메가세일쿠폰.webp') }}" alt="메가세일쿠폰"/>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -235,7 +240,7 @@
             <div class="coupon-box">
                 <h4>Opick에서 더 많은 할인과 <br>
                     혜택을 확인하세요!</h4>
-                <img src={{ url_for('static', filename='img/main/4910_QR코드.png') }} alt="QR코드">
+                <img src="{{ url_for('static', filename='img/main/4910_QR코드.png') }}" alt="QR코드">
                 <p>QR코드를 스캔해 <br>
                     사이트를 확인해주세요.</p>
             </div>
@@ -249,7 +254,7 @@
     <div class="fashion-box">
         <div class="fashion_start">
             <div class="fashion_start-title">
-                <img src={{ url_for('static', filename='img/main/패션소품_카테고리.png') }}  alt="패션소품_카테고리">
+                <img src="{{ url_for('static', filename='img/main/패션소품_카테고리.png') }}" alt="패션소품_카테고리">
                 <h3><i class="fa-regular fa-gem"></i>당신의 옷에 Point를!</h3>
                 <p>각종 패션 소품을 확인하세요! </p>
                 <button>바로가기</button>
@@ -264,22 +269,25 @@
                                 <div class="swiper mySwiperInner1">
                                     <div class="swiper-wrapper">
                                         {% for image in p.images %}
-
                                             <div class="swiper-slide">
-                                                <img class="fashion-img-box"
-                                                     src="{{ url_for('static', filename=image.img_path) }}"
-                                                     alt="{{ p.title }}">
+                                                <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                                    <img class="fashion-img-box"
+                                                         src="{{ url_for('static', filename=image.img_path) }}"
+                                                         alt="{{ p.title }}">
+                                                </a>
                                             </div>
                                         {% endfor %}
                                     </div>
                                 </div>
                                 <div class="fashion-text">
-                                    <h3>{{ p.title }}</h3>
-                                    <div class="fashion-text-1">
-                                        <p>{{ p.discount }}%</p>
-                                        <p>{{ "{:,}".format( p.price) }}원</p>
-                                    </div>
-                                    <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
+                                    <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                        <h3>{{ p.title }}</h3>
+                                        <div class="fashion-text-1">
+                                            <p>{{ p.discount }}%</p>
+                                            <p>{{ "{:,}".format( p.price) }}원</p>
+                                        </div>
+                                        <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
+                                    </a>
                                 </div>
                             </div>
                         {% endfor %}
@@ -313,22 +321,25 @@
                                 <div class="swiper mySwiperInner2">
                                     <div class="swiper-wrapper">
                                         {% for image in p.images %}
-
                                             <div class="swiper-slide">
-                                                <img class="other-img-box"
-                                                     src="{{ url_for('static', filename=image.img_path) }}"
-                                                     alt="{{ p.title }}">
+                                                <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                                    <img class="other-img-box"
+                                                         src="{{ url_for('static', filename=image.img_path) }}"
+                                                         alt="{{ p.title }}">
+                                                </a>
                                             </div>
                                         {% endfor %}
                                     </div>
                                 </div>
                                 <div class="other-text">
-                                    <h3>{{ p.title }}</h3>
-                                    <div class="other-text-1">
-                                        <p>{{ p.discount }}%</p>
-                                        <p>{{ "{:,}".format( p.price) }}원</p>
-                                    </div>
-                                    <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
+                                    <a href="{{ url_for('items.detail', product_id=p.id) }}">
+                                        <h3>{{ p.title }}</h3>
+                                        <div class="other-text-1">
+                                            <p>{{ p.discount }}%</p>
+                                            <p>{{ "{:,}".format( p.price) }}원</p>
+                                        </div>
+                                        <p>{{ "{:,}".format( (p.price * (1 - p.discount / 100))|round(0)|int) }}원</p>
+                                    </a>
                                 </div>
                             </div>
                         {% endfor %}
@@ -403,9 +414,6 @@
             <p>더욱 자세한 사항은 고객센터로 문의 바랍니다.</p>
         </div>
     </div>
-    <!-- <div class="QNA-logo">
-        <img src="./img/찐막로고.png" alt="">
-    </div> -->
 </div>
 
 
@@ -414,7 +422,7 @@
 
 <!-- footer top -->
 <div class="footer_top">
-    <img src="./img/footer_위_사진.jpg" alt="">
+    <img src="{{ url_for('static', filename='img/main/footer_위_사진.jpg') }}" alt="footer start">
 </div>
 
 

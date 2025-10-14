@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, redirect, url_for, render_template, g, request, current_app, send_from_directory
+from flask import Blueprint, redirect, url_for, render_template, g, request, current_app
 from werkzeug.utils import secure_filename
 
 from main import db
@@ -9,21 +9,11 @@ from main.forms import UserCreateForm
 
 bp = Blueprint('member', __name__, url_prefix='/member')
 
-# # mypage 전용 정적 라우트 (팩토리 구조 대응)
-# @bp.route('/mypage_js/<path:filename>')
-# def mypage_static(filename):
-#     """
-#     /member/mypage_js/ 요청 시 main/static/mypage_js에서 파일을 반환
-#     """
-#     # root_path는 이미 main을 가리키므로 'main'을 추가하면 안 됨
-#     static_dir = os.path.join(current_app.root_path, 'static', 'mypage_js')
-#     return send_from_directory(static_dir, filename)
-
 
 @bp.route('/mypage', methods=['GET', 'POST'])
 def mypage():
     form = UserCreateForm()
-    page = request.args.get('page', default=1, type=int) # 페이지
+    page = request.args.get('page', default=1, type=int)  # 페이지
     if g.user.admin:
         product_list = Product.query.order_by(Product.create_date.desc()) \
             .paginate(page=page, per_page=7)
@@ -32,8 +22,6 @@ def mypage():
             .filter_by(user_id=g.user.id) \
             .order_by(Product.create_date.desc()) \
             .paginate(page=page, per_page=7)
-
-
 
     if request.method == 'POST':
         formimage = form.image.data
@@ -47,12 +35,12 @@ def mypage():
             file_path = os.path.join(upload_folder, filename)
             formimage.save(file_path)
 
-
             g.user.image = f'user_img/{g.user.id}/{filename}'
             db.session.commit()
         return redirect(url_for('member.mypage'))
 
     return render_template('member/mypage.html', user=g.user, form=form, page=page, product_list=product_list)
+
 
 @bp.route('/create', methods=['GET'])
 def create():

@@ -1,6 +1,5 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import Blueprint, render_template, request, flash, url_for, redirect, g, current_app
-from werkzeug.utils import secure_filename
 import os
 from main import db
 from main.models import Product, ProductImage
@@ -16,8 +15,7 @@ def _main():
     accessory = Product.query.filter_by(tags='악세서리').all()
     misc = Product.query.filter_by(tags='잡화').all()
 
-
-    return render_template('items/items_main.html',event=event, clothing=clothing, misc=misc, accessory=accessory)
+    return render_template('items/items_main.html', event=event, clothing=clothing, misc=misc, accessory=accessory)
 
 
 @bp.route('/list/')
@@ -27,7 +25,7 @@ def _list():
 
 
 @bp.route('/create', methods=['GET', 'POST'])
-@login_required # 로그인한 사용자만 접근이 가능
+@login_required  # 로그인한 사용자만 접근이 가능
 def create():
     if request.method == 'POST':
         #  html 입력한 값 받아오기
@@ -45,25 +43,25 @@ def create():
             price=price,
             discount=discount,
             create_date=datetime.now(),
-            tags = tags,
+            tags=tags,
             user_id=user_id
         )
         db.session.add(product)
-        db.session.commit()     # db 에 먼저 저장해서 product.id 확보
+        db.session.commit()  # db 에 먼저 저장해서 product.id 확보
 
-        files = request.files.getlist('images') # 여러 이미지 가져오기
-        upload_folder = os.path.join(current_app.root_path, 'static/product_img', str(g.user.id)) # 저장할 경로
-        os.makedirs(upload_folder, exist_ok=True) # 경로에 해당하는 파일이 없으면 생성
+        files = request.files.getlist('images')  # 여러 이미지 가져오기
+        upload_folder = os.path.join(current_app.root_path, 'static/product_img', str(g.user.id))  # 저장할 경로
+        os.makedirs(upload_folder, exist_ok=True)  # 경로에 해당하는 파일이 없으면 생성
 
         for file in files:
-            if file and file.filename != '': # 파일 존재 확인
-                filename = file.filename # 안전한 파일명
-                filepath = os.path.join(upload_folder, filename) # 저장 경로
-                file.save(filepath) # 서버에 파일 저장
+            if file and file.filename != '':  # 파일 존재 확인
+                filename = file.filename  # 안전한 파일명
+                filepath = os.path.join(upload_folder, filename)  # 저장 경로
+                file.save(filepath)  # 서버에 파일 저장
 
                 product_image = ProductImage(
                     product_id=product.id,
-                    img_path=f'product_img/{g.user.id}/{filename}' # 저장하면서 경로에 userid추가
+                    img_path=f'product_img/{g.user.id}/{filename}'  # 저장하면서 경로에 userid추가
                 )
                 db.session.add(product_image)
 
@@ -76,9 +74,27 @@ def create():
 
 @bp.route('/detail/<int:product_id>')
 def detail(product_id):
+    weekday_map = {
+        'Mon': '월',
+        'Tue': '화',
+        'Wed': '수',
+        'Thu': '목',
+        'Fri': '금',
+        'Sat': '토',
+        'Sun': '일'
+    }
+    today = datetime.today()
+    arrival_date = datetime.today() + timedelta(days=2)
+    today_weekday = weekday_map[today.strftime('%a')]
+    weekday = weekday_map[arrival_date.strftime('%a')]
+    today_formatted_date = today.strftime(f'%m.%d ({today_weekday})')
+    formatted_date = arrival_date.strftime(f'%m.%d ({weekday})')
+
     products = Product.query.order_by(Product.create_date.desc()).all()
     product = Product.query.get_or_404(product_id)
-    return render_template('items/items_detail.html', product=product, products=products )
+
+    return render_template('items/items_detail.html', product=product, products=products, arrival=formatted_date,
+                           today=today_formatted_date)
 
 
 @bp.route('/delete/<int:product_id>')
@@ -100,5 +116,3 @@ def delete_product(product_id):
     flash('상품이 삭제되었습니다.', 'success')
 
     return redirect(url_for('member.mypage'))
-
-
