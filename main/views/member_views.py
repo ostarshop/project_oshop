@@ -16,12 +16,12 @@ def mypage():
     page = request.args.get('page', default=1, type=int)  # 페이지
     if g.user.admin:
         product_list = Product.query.order_by(Product.create_date.desc()) \
-            .paginate(page=page, per_page=7)
+            .paginate(page=page, per_page=5)
     else:
         product_list = Product.query \
             .filter_by(user_id=g.user.id) \
             .order_by(Product.create_date.desc()) \
-            .paginate(page=page, per_page=7)
+            .paginate(page=page, per_page=5)
 
     if request.method == 'POST':
         formimage = form.image.data
