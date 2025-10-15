@@ -167,3 +167,77 @@ var swiper6 = new Swiper(".mySwiper6", {
     slidesPerView: 1,
     effect: 'fade',
   });
+
+   // window.addEventListener("scroll", () => {
+   //  const btn = document.getElementById("Slider2");
+   //  if (window.scrollY > 100) {
+   //      btn.classList.add("visible");
+   //  } else {
+   //      btn.classList.remove("visible");
+   //  }
+   //  });
+
+    // 버튼 클릭하면 맨 위로 부드럽게 이동. 이벤트
+document.getElementById("eventicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("Slider2");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+});
+
+// 의류
+document.getElementById("clothingicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("clothing");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
+
+// 장신구
+document.getElementById("accessoryicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("accessory");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
+
+// 잡화
+document.getElementById("miscicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("misc");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 200;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
+
+// 리뷰
+document.getElementById("qnaicon").addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.getElementById("qna");
+    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - 50;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+})
