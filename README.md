@@ -155,6 +155,11 @@ Flask 프레임워크의 유연성을 이해하고, <br>
 
 ![메인페이지](./video/메인페이지_기능.gif)
 
+<video width="600" controls>
+  <source src="./video/메인페이지_기능.gif.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 * 화면 구현
 * 슬라이더 / 클릭했을 때 이동하는 위치
 </details>
