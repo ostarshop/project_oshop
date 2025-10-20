@@ -200,7 +200,7 @@ Flask 프레임워크의 유연성을 이해하고, <br>
 </details>
 
 ## 📂 프로젝트 보고서
-[Opickmall project 결과보고.pdf](./img/project_oshop_문서작성.pdf)
+[Opickmall project 결과보고.pdf](./img/project_oshop.pdf)
 
 
 <br>
